@@ -3044,5 +3044,62 @@ document.querySelectorAll('.ss-img').forEach(function(img){
 </script>
 
 
+<!-- Password gate -->
+<div id="pw-gate" style="position:fixed;inset:0;z-index:999999;background:#0f1115;display:flex;align-items:center;justify-content:center;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;">
+  <div style="background:#1a1d24;border:1px solid #2a2e38;border-radius:12px;padding:36px 32px;width:320px;max-width:90vw;box-shadow:0 20px 60px rgba(0,0,0,.4);">
+    <div style="font-size:15px;font-weight:600;color:#f4f4f5;margin-bottom:6px;">Protected page</div>
+    <div style="font-size:13px;color:#9ca3af;margin-bottom:18px;">Enter the password to view this document.</div>
+    <input id="pw-gate-input" type="password" placeholder="Password" autocomplete="off"
+      style="width:100%;box-sizing:border-box;padding:10px 12px;border-radius:8px;border:1px solid #2a2e38;background:#0f1115;color:#f4f4f5;font-size:14px;outline:none;margin-bottom:10px;">
+    <button id="pw-gate-submit"
+      style="width:100%;padding:10px 12px;border-radius:8px;border:none;background:#f4f4f5;color:#0f1115;font-size:14px;font-weight:600;cursor:pointer;">Unlock</button>
+    <div id="pw-gate-error" style="display:none;color:#f87171;font-size:12.5px;margin-top:10px;">Incorrect password. Try again.</div>
+  </div>
+</div>
+<script>
+(function(){
+  var HASH = "f7f5c02c19d791f7227ce265543d5c34c9b896f39f2d55a93c1f5d88712938c7";
+  var gate = document.getElementById('pw-gate');
+  var input = document.getElementById('pw-gate-input');
+  var btn = document.getElementById('pw-gate-submit');
+  var err = document.getElementById('pw-gate-error');
+
+  function sha256(str){
+    var buf = new TextEncoder().encode(str);
+    return crypto.subtle.digest('SHA-256', buf).then(function(hashBuf){
+      var arr = Array.from(new Uint8Array(hashBuf));
+      return arr.map(function(b){ return b.toString(16).padStart(2,'0'); }).join('');
+    });
+  }
+
+  function tryUnlock(){
+    var val = input.value;
+    sha256(val).then(function(hex){
+      if (hex === HASH) {
+        try { sessionStorage.setItem('pw_gate_ok', '1'); } catch(e) {}
+        gate.style.display = 'none';
+      } else {
+        err.style.display = 'block';
+        input.value = '';
+        input.focus();
+      }
+    });
+  }
+
+  btn.addEventListener('click', tryUnlock);
+  input.addEventListener('keydown', function(e){ if (e.key === 'Enter') tryUnlock(); });
+
+  try {
+    if (sessionStorage.getItem('pw_gate_ok') === '1') {
+      gate.style.display = 'none';
+    } else {
+      setTimeout(function(){ input.focus(); }, 50);
+    }
+  } catch(e) {
+    setTimeout(function(){ input.focus(); }, 50);
+  }
+})();
+</script>
+
 </body>
 </html>
