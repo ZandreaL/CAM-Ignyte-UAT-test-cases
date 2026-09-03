@@ -2562,30 +2562,22 @@ code { font-family: 'Fira Code', monospace; font-size: 11px;
           <div class="adm-path"><span class="adm-path-arr">▸</span><span><strong>Complete</strong> — available only from <em>Pending Recon</em> status; marks reconciliation as done and closes the item</span></div>
         </div>
 
-        <h3>Happy Path</h3>
-        <p>Each KYC field is checked against its pass condition:</p>
-        <div class="adm-paths">
-          <div class="adm-path"><span class="adm-path-arr">1.</span><span><strong>Identity (D1) — ID document upload:</strong> file present, readable, not expired</span></div>
-          <div class="adm-path"><span class="adm-path-arr">2.</span><span><strong>Personal (D2) — ID number format:</strong> 13-digit valid format</span></div>
-          <div class="adm-path"><span class="adm-path-arr">3.</span><span><strong>Personal (D2) — Marital status = COP:</strong> spouse ID document uploaded</span></div>
-          <div class="adm-path"><span class="adm-path-arr">4.</span><span><strong>Personal (D2) — Authorised Signatory = Yes:</strong> signatory details complete</span></div>
-          <div class="adm-path"><span class="adm-path-arr">5.</span><span><strong>Compliance (D3) — PEP = Yes:</strong> PEP details submitted; flag raised</span></div>
-          <div class="adm-path"><span class="adm-path-arr">6.</span><span><strong>Compliance (D3) — Tax residency:</strong> valid country + tax number or exemption</span></div>
-          <div class="adm-path"><span class="adm-path-arr">7.</span><span><strong>Banking (D4) — Account number:</strong> passes bank digit validation</span></div>
-          <div class="adm-path"><span class="adm-path-arr">8.</span><span><strong>Investment (D5) — Investment amount:</strong> amount ≥ product minimum (see E3)</span></div>
-        </div>
-        <p>All sections pass → application is progressed via the appropriate action (Approve / Complete).</p>
-
-        <h3>Error States</h3>
-        <div class="adm-paths">
-          <div class="adm-path"><span class="adm-path-arr">E1</span><span><strong>Identity (D1) fails pass condition:</strong> section held; investor notified to re-upload</span></div>
-          <div class="adm-path"><span class="adm-path-arr">E2</span><span><strong>Personal (D2) ID number fails:</strong> section rejected; investor notified</span></div>
-          <div class="adm-path"><span class="adm-path-arr">E3</span><span><strong>Personal (D2) Marital status = COP, spouse doc missing:</strong> held at <em>Pending — Spouse Doc</em></span></div>
-          <div class="adm-path"><span class="adm-path-arr">E4</span><span><strong>Personal (D2) Authorised Signatory incomplete:</strong> held pending signatory verification</span></div>
-          <div class="adm-path"><span class="adm-path-arr">E5</span><span><strong>Compliance (D3) PEP flag raised:</strong> application routed to Compliance team</span></div>
-          <div class="adm-path"><span class="adm-path-arr">E6</span><span><strong>Compliance (D3) Tax residency incomplete:</strong> held; investor prompted for tax number</span></div>
-          <div class="adm-path"><span class="adm-path-arr">E7</span><span><strong>Banking (D4) Account number fails validation:</strong> section rejected; investor re-enters</span></div>
-          <div class="adm-path"><span class="adm-path-arr">E8</span><span><strong>Investment (D5) amount below minimum:</strong> section blocked; error shown to investor</span></div>
+        <h3>Happy Path / Error States</h3>
+        <p>Each KYC field is checked against its pass condition. All fields passing progresses the application via the appropriate action (Approve / Complete):</p>
+        <div class="adm-table-wrap">
+          <table class="adm-table">
+            <thead><tr><th>KYC Screen</th><th>Field / Check</th><th>Happy Path</th><th>Error States</th></tr></thead>
+            <tbody>
+              <tr><td>Identity (D1)</td><td>ID document upload</td><td>File present, readable, not expired</td><td>Section held; investor notified to re-upload</td></tr>
+              <tr><td>Personal (D2)</td><td>ID number format</td><td>13-digit valid format</td><td>Section rejected; investor notified</td></tr>
+              <tr><td>Personal (D2)</td><td>Marital status = COP</td><td>Spouse ID document uploaded</td><td>Held at <em>Pending — Spouse Doc</em></td></tr>
+              <tr><td>Personal (D2)</td><td>Authorised Signatory = Yes</td><td>Signatory details complete</td><td>Held pending signatory verification</td></tr>
+              <tr><td>Compliance (D3)</td><td>PEP = Yes</td><td>PEP details submitted; flag raised</td><td>Application routed to Compliance team</td></tr>
+              <tr><td>Compliance (D3)</td><td>Tax residency</td><td>Valid country + tax number or exemption</td><td>Held; investor prompted for tax number</td></tr>
+              <tr><td>Banking (D4)</td><td>Account number</td><td>Passes bank digit validation</td><td>Section rejected; investor re-enters</td></tr>
+              <tr><td>Investment (D5)</td><td>Investment amount</td><td>Amount ≥ product minimum (see E3)</td><td>Section blocked; error shown to investor</td></tr>
+            </tbody>
+          </table>
         </div>
 
         <h3>Tester Notes</h3>
