@@ -2375,7 +2375,7 @@ code { font-family: 'Fira Code', monospace; font-size: 11px;
           </table>
         </div>
 
-        <h3>Happy Path</h3>
+        <h3 style="color:#3aac6e">✓ Happy Path</h3>
         <div class="adm-paths">
           <div class="adm-path"><span class="adm-path-arr">1.</span><span>Sign in → Dashboard loads → metrics populate from the analytics API</span></div>
           <div class="adm-path"><span class="adm-path-arr">2.</span><span><strong>Open Worklist</strong> — navigates to /admin/worklist (E1)</span></div>
@@ -2383,7 +2383,7 @@ code { font-family: 'Fira Code', monospace; font-size: 11px;
           <div class="adm-path"><span class="adm-path-arr">4.</span><span><strong>Usage Analytics</strong> — navigates to /admin/usage (E6)</span></div>
         </div>
 
-        <h3>Tester Notes</h3>
+        <h3 style="color:#7A9CC4">⚠ Tester Notes</h3>
         <div class="adm-note tip">💡 All metrics show <strong>—</strong> on first load until the analytics API responds. A hard refresh resolves this. The activity chart below the metrics also loads asynchronously ("Usage chart — data loads from analytics API").</div>
       </div>
     </div>
@@ -2444,14 +2444,14 @@ code { font-family: 'Fira Code', monospace; font-size: 11px;
           <span class="adm-tag rejected"><span class="adm-tag-dot"></span>Declined</span>
         </div>
 
-        <h3>Happy Path</h3>
+        <h3 style="color:#3aac6e">✓ Happy Path</h3>
         <div class="adm-paths">
           <div class="adm-path"><span class="adm-path-arr">1.</span><span>Select a category tab (Proposals / Applications / Change Requests / KYC-FIA)</span></div>
           <div class="adm-path"><span class="adm-path-arr">2.</span><span>Apply Entity / Assignee / SLA / Status / Risk filters as needed, or toggle Show Active</span></div>
           <div class="adm-path"><span class="adm-path-arr">3.</span><span>Review the queue → click into an item to open the Application Review screen (E1b)</span></div>
         </div>
 
-        <h3>Tester Notes</h3>
+        <h3 style="color:#7A9CC4">⚠ Tester Notes</h3>
         <div class="adm-note sla">⏱ The SLA column counts down from the Application SLA target (configured in E4). A negative value (e.g. <code>-18596m</code>) means the SLA has already been exceeded by that many minutes.</div>
       </div>
     </div>
@@ -2526,7 +2526,7 @@ code { font-family: 'Fira Code', monospace; font-size: 11px;
         <p><strong>Statuses tab:</strong> Defines the valid status values that appear in the Worklist Status column. Each status has a label, colour indicator, and whether it counts as a terminal state (closed). Statuses cannot be applied directly — they are set via IF→THEN rule outcomes.</p>
         <p><strong>Actions tab:</strong> Defines the action buttons that appear in the worklist Actions column for each item. Each action has a label and a key that is referenced in IF→THEN rule conditions. Examples: <em>Assign</em>, <em>Approve</em>, <em>Decline</em>, <em>Request Info</em>, <em>Complete</em>.</p>
 
-        <h3>Happy Path</h3>
+        <h3 style="color:#3aac6e">✓ Happy Path</h3>
         <div class="adm-paths">
           <div class="adm-path"><span class="adm-path-arr">1.</span><span>Select a category (e.g. Applications) from the top-left selector</span></div>
           <div class="adm-path"><span class="adm-path-arr">2.</span><span>Review the Rules tab in top-to-bottom precedence order</span></div>
@@ -2534,7 +2534,7 @@ code { font-family: 'Fira Code', monospace; font-size: 11px;
           <div class="adm-path"><span class="adm-path-arr">4.</span><span>Optionally review/adjust the Statuses and Actions tabs for the same category</span></div>
         </div>
 
-        <h3>Tester Notes</h3>
+        <h3 style="color:#7A9CC4">⚠ Tester Notes</h3>
         <div class="adm-note warn">⚠️ Rule order matters. Drag rules to reorder precedence. The Reset to defaults button restores the system's original rule set for that category. Changes take effect immediately with no deployment step.</div>
       </div>
     </div>
@@ -2562,7 +2562,7 @@ code { font-family: 'Fira Code', monospace; font-size: 11px;
           <div class="adm-path"><span class="adm-path-arr">▸</span><span><strong>Complete</strong> — available only from <em>Pending Recon</em> status; marks reconciliation as done and closes the item</span></div>
         </div>
 
-        <h3>Happy Path / Error States</h3>
+        <h3><span style="color:#3aac6e">✓ Happy Path</span> / <span style="color:#e05a60">✗ Error States</span></h3>
         <p>Each KYC field is checked against its pass condition. All fields passing progresses the application via the appropriate action (Approve / Complete):</p>
         <div class="adm-table-wrap">
           <table class="adm-table">
@@ -2580,7 +2580,7 @@ code { font-family: 'Fira Code', monospace; font-size: 11px;
           </table>
         </div>
 
-        <h3>Tester Notes</h3>
+        <h3 style="color:#7A9CC4">⚠ Tester Notes</h3>
         <div class="adm-note warn">⚠️ Rejecting a section does not delete investor data. It marks the section as editable and notifies the investor. All previous submissions are retained in audit history.</div>
       </div>
     </div>
@@ -2597,7 +2597,7 @@ code { font-family: 'Fira Code', monospace; font-size: 11px;
         <h3>Trigger</h3>
         <p>Staff performs an action from the Worklist (E1) or Application Review (E1b) screen (Assign / Approve / Request Info / Decline / Complete), or an SLA deadline passes without action. This is the system-level conditional logic governing application progression — not a distinct screen.</p>
 
-        <h3>Happy Path</h3>
+        <h3 style="color:#3aac6e">✓ Happy Path</h3>
         <div class="adm-paths">
           <div class="adm-path"><span class="adm-path-arr">1.</span><span>Staff action = <strong>Assign</strong> AND current status = <em>Waiting Review</em> → Status changes to <strong>Under Review</strong>. Item is locked to the assignee's queue.</span></div>
           <div class="adm-path"><span class="adm-path-arr">2.</span><span>Staff action = <strong>Approve</strong> AND Risk = Low or Medium AND no missing requirements → Status changes to <strong>Pending Recon</strong>. System auto-assigns to reconciliation role.</span></div>
@@ -2607,7 +2607,7 @@ code { font-family: 'Fira Code', monospace; font-size: 11px;
           <div class="adm-path"><span class="adm-path-arr">6.</span><span>Status = <em>Pending Recon</em> AND staff action = <strong>Complete</strong> → Status changes to <strong>Completed</strong>. Application is fully closed and moves out of active queue.</span></div>
         </div>
 
-        <h3>Error States</h3>
+        <h3 style="color:#e05a60">✗ Error States</h3>
         <div class="adm-paths">
           <div class="adm-path"><span class="adm-path-arr">E1</span><span><strong>Application has missing requirements (flag is set):</strong> Approve action is blocked. Staff must use <em>Request Info</em> first. Missing requirements must be resolved before approval.</span></div>
           <div class="adm-path"><span class="adm-path-arr">E2</span><span><strong>SLA deadline passes without action:</strong> SLA dot on the worklist row turns <strong>Red</strong> (below 20% threshold). Dashboard escalation counter increments. Operations Manager is notified per SLA config (E4).</span></div>
@@ -2654,13 +2654,13 @@ code { font-family: 'Fira Code', monospace; font-size: 11px;
           </table>
         </div>
 
-        <h3>Happy Path</h3>
+        <h3 style="color:#3aac6e">✓ Happy Path</h3>
         <div class="adm-paths">
           <div class="adm-path"><span class="adm-path-arr">1.</span><span>Open the model registry → identify a model's status (Draft / Published / Archived)</span></div>
           <div class="adm-path"><span class="adm-path-arr">2.</span><span>A Draft model does not yet serve inference requests; per E2a, it is published from this list to go live</span></div>
         </div>
 
-        <h3>Tester Notes</h3>
+        <h3 style="color:#7A9CC4">⚠ Tester Notes</h3>
         <div class="adm-note info">ℹ️ The Dashboard (E0) AI Models count reflects models in all statuses. A count of 0 active Published models means the platform's recommendation engine falls back to a static fund list.</div>
       </div>
     </div>
@@ -2691,14 +2691,14 @@ code { font-family: 'Fira Code', monospace; font-size: 11px;
           </table>
         </div>
 
-        <h3>Happy Path</h3>
+        <h3 style="color:#3aac6e">✓ Happy Path</h3>
         <div class="adm-paths">
           <div class="adm-path"><span class="adm-path-arr">1.</span><span>Enter Name, select Model Type, enter Azure Deployment Name, optionally add Description</span></div>
           <div class="adm-path"><span class="adm-path-arr">2.</span><span>Click <strong>Create Model</strong> → creates the model in Draft status; it appears in the model list (E2) but does not yet serve requests</span></div>
         </div>
         <p>Alternative: click <strong>Cancel</strong> to return to the model list (E2) without saving.</p>
 
-        <h3>Tester Notes</h3>
+        <h3 style="color:#7A9CC4">⚠ Tester Notes</h3>
         <div class="adm-note tip">💡 New models are always created as <strong>Draft</strong>. To make a model live, it must be published from the model list (E2) after creation.</div>
       </div>
     </div>
@@ -2739,14 +2739,14 @@ code { font-family: 'Fira Code', monospace; font-size: 11px;
           </table>
         </div>
 
-        <h3>Happy Path</h3>
+        <h3 style="color:#3aac6e">✓ Happy Path</h3>
         <div class="adm-paths">
           <div class="adm-path"><span class="adm-path-arr">1.</span><span>Select the Business Rules or Workflow Rules tab</span></div>
           <div class="adm-path"><span class="adm-path-arr">2.</span><span>View the registry of rules by domain → toggle a rule's Active/Inactive status to enable or disable it without deleting it</span></div>
           <div class="adm-path"><span class="adm-path-arr">3.</span><span>Optionally click <strong>+ New Rule</strong> to open the creation form</span></div>
         </div>
 
-        <h3>Tester Notes</h3>
+        <h3 style="color:#7A9CC4">⚠ Tester Notes</h3>
         <div class="adm-note info">ℹ️ Inactive rules are stored but not evaluated. Toggle a rule's status to activate or deactivate it without deleting it. The Dashboard (E0) Business Rules count reflects only Active rules.</div>
       </div>
     </div>
@@ -2787,14 +2787,14 @@ code { font-family: 'Fira Code', monospace; font-size: 11px;
           </table>
         </div>
 
-        <h3>Happy Path</h3>
+        <h3 style="color:#3aac6e">✓ Happy Path</h3>
         <div class="adm-paths">
           <div class="adm-path"><span class="adm-path-arr">1.</span><span><strong>Add SLA</strong> — creates a new worklist category SLA entry</span></div>
           <div class="adm-path"><span class="adm-path-arr">2.</span><span><strong>Edit</strong> on an existing SLA — opens an inline edit form for the Application SLA duration</span></div>
           <div class="adm-path"><span class="adm-path-arr">3.</span><span><strong>Add role SLA</strong> under a category — adds an assignee-role-specific SLA target for that category</span></div>
         </div>
 
-        <h3>Tester Notes</h3>
+        <h3 style="color:#7A9CC4">⚠ Tester Notes</h3>
         <div class="adm-note sla">⏱ SLA countdown on the Worklist always shows the Application SLA (not the role SLA). The role SLA is used internally for escalation routing and reporting but is not displayed on the worklist row itself.</div>
       </div>
     </div>
@@ -2824,14 +2824,14 @@ code { font-family: 'Fira Code', monospace; font-size: 11px;
           </table>
         </div>
 
-        <h3>Happy Path</h3>
+        <h3 style="color:#3aac6e">✓ Happy Path</h3>
         <div class="adm-paths">
           <div class="adm-path"><span class="adm-path-arr">1.</span><span>Select a domain from the dropdown → its items load for viewing/editing</span></div>
           <div class="adm-path"><span class="adm-path-arr">2.</span><span>Optionally toggle Include inactive items to see deactivated entries</span></div>
           <div class="adm-path"><span class="adm-path-arr">3.</span><span>Click <strong>+ New Item</strong> to add a new entry to the selected domain</span></div>
         </div>
 
-        <h3>Tester Notes</h3>
+        <h3 style="color:#7A9CC4">⚠ Tester Notes</h3>
         <div class="adm-note info">ℹ️ Reference data changes affect all investor-facing screens immediately. Changes to country lists, entity types, or risk profile options will be visible in the investor portal on next page load.</div>
       </div>
     </div>
@@ -2876,18 +2876,18 @@ code { font-family: 'Fira Code', monospace; font-size: 11px;
         </div>
         <p>Above the log, a summary panel shows the most frequently performed operations in the selected time/filter window.</p>
 
-        <h3>Happy Path</h3>
+        <h3 style="color:#3aac6e">✓ Happy Path</h3>
         <div class="adm-paths">
           <div class="adm-path"><span class="adm-path-arr">1.</span><span>Apply Filter by user email and/or Filter by context</span></div>
           <div class="adm-path"><span class="adm-path-arr">2.</span><span>Review the activity log entries and the Top Activity by Context summary panel for the selected window</span></div>
         </div>
 
-        <h3>Error States</h3>
+        <h3 style="color:#e05a60">✗ Error States</h3>
         <div class="adm-paths">
           <div class="adm-path"><span class="adm-path-arr">E1</span><span><strong>No data matches the applied filters:</strong> "No activity found for the selected filters" message is shown</span></div>
         </div>
 
-        <h3>Tester Notes</h3>
+        <h3 style="color:#7A9CC4">⚠ Tester Notes</h3>
         <div class="adm-note tip">💡 Use <code>GetInstanceQuery</code> events to trace workflow instance lookups. Use <code>GetUserActivitySummaryQuery</code> events to identify which staff members are most active.</div>
       </div>
     </div>
@@ -2930,14 +2930,14 @@ code { font-family: 'Fira Code', monospace; font-size: 11px;
           </table>
         </div>
 
-        <h3>Happy Path</h3>
+        <h3 style="color:#3aac6e">✓ Happy Path</h3>
         <div class="adm-paths">
           <div class="adm-path"><span class="adm-path-arr">1.</span><span>Apply the <strong>Status filter</strong> (All statuses / InProgress / Completed / Suspended / Cancelled) and/or <strong>Workflow filter</strong></span></div>
           <div class="adm-path"><span class="adm-path-arr">2.</span><span>Click <strong>↺ Refresh</strong> to manually refresh the instance list (it does not auto-refresh)</span></div>
           <div class="adm-path"><span class="adm-path-arr">3.</span><span>Click <strong>View</strong> on a row to open the full instance detail, including step history and payload</span></div>
         </div>
 
-        <h3>Tester Notes</h3>
+        <h3 style="color:#7A9CC4">⚠ Tester Notes</h3>
         <div class="adm-note info">ℹ️ Instances stuck on <code>must-complete-in-person</code> indicate investors who were redirected to a branch for in-person completion. These will remain InProgress until the branch process is completed and the workflow is advanced manually or via integration.</div>
       </div>
     </div>
@@ -2968,7 +2968,7 @@ code { font-family: 'Fira Code', monospace; font-size: 11px;
           </table>
         </div>
 
-        <h3>Happy Path</h3>
+        <h3 style="color:#3aac6e">✓ Happy Path</h3>
         <div class="adm-paths">
           <div class="adm-path"><span class="adm-path-arr">1.</span><span>View the pre-configured report for the given period and client</span></div>
           <div class="adm-path"><span class="adm-path-arr">2.</span><span>Click <strong>Export PDF</strong> → generates a downloadable PDF of the displayed report</span></div>
@@ -3001,19 +3001,19 @@ code { font-family: 'Fira Code', monospace; font-size: 11px;
           </table>
         </div>
 
-        <h3>Happy Path</h3>
+        <h3 style="color:#3aac6e">✓ Happy Path</h3>
         <div class="adm-paths">
           <div class="adm-path"><span class="adm-path-arr">1.</span><span>Click <strong>Run All Checks</strong> → health checks execute against all configured integration endpoints</span></div>
           <div class="adm-path"><span class="adm-path-arr">2.</span><span>Each integration displays a <strong>Healthy</strong> result</span></div>
         </div>
 
-        <h3>Error States</h3>
+        <h3 style="color:#e05a60">✗ Error States</h3>
         <div class="adm-paths">
           <div class="adm-path"><span class="adm-path-arr">E1</span><span><strong>Degraded:</strong> integration returns a degraded status indicator</span></div>
           <div class="adm-path"><span class="adm-path-arr">E2</span><span><strong>Failed:</strong> integration returns a failed status indicator</span></div>
         </div>
 
-        <h3>Tester Notes</h3>
+        <h3 style="color:#7A9CC4">⚠ Tester Notes</h3>
         <div class="adm-note tip">💡 Run diagnostics when investors or staff report errors connecting to bank validation, document verification, or other third-party services. The results identify which specific integration is failing.</div>
       </div>
     </div>
