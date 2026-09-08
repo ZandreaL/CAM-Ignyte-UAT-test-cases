@@ -2947,7 +2947,8 @@ code { font-family: 'Fira Code', monospace; font-size: 11px;
       <div class="adm-sc-header">
         <span class="adm-section-id">E8</span>
         <span class="adm-section-title">Reports</span>
-        <span class="adm-tag approved" style="font-size:10.5px;margin-left:auto"><span class="adm-tag-dot"></span>✓ Happy</span>
+        <span class="adm-tag pending" style="font-size:10.5px;margin-left:auto"><span class="adm-tag-dot"></span>⚠ Mock Data</span>
+        <span class="adm-tag rejected" style="font-size:10.5px"><span class="adm-tag-dot"></span>✗ Export PDF Non-Functional</span>
         <span style="font-family:'Fira Code',monospace;font-size:11px;color:var(--adm-text3)">/admin/reports</span>
       </div>
       <div class="adm-sc-body">
@@ -2955,7 +2956,7 @@ code { font-family: 'Fira Code', monospace; font-size: 11px;
         <p>Staff navigates to Reports to generate and export investor portfolio reports. Reports are pre-configured for a period and client.</p>
 
         <h3>UI Elements</h3>
-        <p>Report details (sample captured):</p>
+        <p>Report details (sample captured — <strong>mock data, not live values</strong>):</p>
         <div class="adm-table-wrap">
           <table class="adm-table">
             <thead><tr><th>Field</th><th>Value (sample)</th></tr></thead>
@@ -2971,8 +2972,13 @@ code { font-family: 'Fira Code', monospace; font-size: 11px;
         <h3 style="color:#3aac6e">✓ Happy Path</h3>
         <div class="adm-paths">
           <div class="adm-path"><span class="adm-path-arr">1.</span><span>View the pre-configured report for the given period and client</span></div>
-          <div class="adm-path"><span class="adm-path-arr">2.</span><span>Click <strong>Export PDF</strong> → generates a downloadable PDF of the displayed report</span></div>
         </div>
+
+        <h3 style="color:#e05a60">✗ Error States</h3>
+        <div class="adm-note warn">✗ <strong>Export PDF is non-functional.</strong> Clicking Export PDF does not generate a downloadable PDF of the displayed report. This step cannot currently be validated by testers.</div>
+
+        <h3 style="color:#7A9CC4">⚠ Tester Notes</h3>
+        <div class="adm-note warn">⚠️ The table above shows sample/mock data captured during testing, not live figures. The Period, Client, Total Market Value, and Annualised Return values will differ depending on which period and client are actually selected — treat this table as an illustration of the report's layout and fields, not as representative data to validate against.</div>
       </div>
     </div>
 
