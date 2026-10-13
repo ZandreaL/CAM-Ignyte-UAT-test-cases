@@ -386,6 +386,8 @@ code { font-family: 'Fira Code', monospace; font-size: 11px;
     }
     .adm-sc-header {
       display: flex;
+      flex-wrap: wrap;
+      row-gap: 6px;
       align-items: center;
       gap: 12px;
       padding: 14px 20px;
@@ -469,6 +471,10 @@ code { font-family: 'Fira Code', monospace; font-size: 11px;
     .adm-path { display: flex; align-items: center; gap: 4px; flex-wrap: wrap; margin: 8px 0 14px; }
     .adm-path span { background: var(--adm-surface3); color: var(--adm-text); font-size: 12px; padding: 4px 10px; border-radius: 6px; border: 1px solid var(--adm-gold-border); }
     .adm-path-arr { color: var(--adm-gold); font-size: 14px; font-weight: 700; }
+    .adm-path { flex-wrap: nowrap; align-items: flex-start; }
+    .adm-path > span { line-height: 1.5; }
+    .adm-path > span:not(.adm-path-arr) { flex: 1 1 auto; min-width: 0; }
+    .adm-path > .adm-path-arr { flex: none; }
     /* Screenshot placeholder */
     .adm-pending-ss { background: var(--adm-surface2); border: 1px dashed var(--adm-gold-border); border-radius: 8px; padding: 28px; text-align: center; color: var(--adm-text2); font-size: 12px; margin: 14px 0; }
     /* Section banner */
@@ -2318,8 +2324,8 @@ code { font-family: 'Fira Code', monospace; font-size: 11px;
       <p>Staff-only portal for managing investor applications, AI model configuration, business rules, SLA settings, workflows, and platform analytics. Access is restricted to authorised CAM staff via Microsoft Azure Active Directory (EntraID SSO) with role-based permissions. URL: <code style="font-family:'Fira Code',monospace;font-size:12px;color:var(--adm-gold)">/admin/</code></p>
       <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px">
         <span class="adm-tag approved" style="font-size:11px"><span class="adm-tag-dot"></span>19 modules documented</span>
-        <span class="adm-tag active" style="font-size:11px"><span class="adm-tag-dot"></span>12 fully captured</span>
-        <span class="adm-tag pending" style="font-size:11px"><span class="adm-tag-dot"></span>7 require re-auth to capture</span>
+        <span class="adm-tag active" style="font-size:11px"><span class="adm-tag-dot"></span>E0–E9 captured via walkthrough</span>
+        <span class="adm-tag pending" style="font-size:11px"><span class="adm-tag-dot"></span>E10–E16 from screenshots + as-built reference</span>
       </div>
     </div>
 
@@ -2384,7 +2390,7 @@ code { font-family: 'Fira Code', monospace; font-size: 11px;
         </div>
 
         <h3 style="color:#7A9CC4">⚠ Tester Notes</h3>
-        <div class="adm-note tip">💡 All metrics show <strong>—</strong> on first load until the analytics API responds. A hard refresh resolves this. The activity chart below the metrics also loads asynchronously ("Usage chart — data loads from analytics API").</div>
+        <div class="adm-note tip"><div>💡 All metrics show <strong>—</strong> on first load until the analytics API responds. A hard refresh resolves this. The activity chart below the metrics also loads asynchronously ("Usage chart — data loads from analytics API").</div></div>
       </div>
     </div>
 
@@ -2452,7 +2458,7 @@ code { font-family: 'Fira Code', monospace; font-size: 11px;
         </div>
 
         <h3 style="color:#7A9CC4">⚠ Tester Notes</h3>
-        <div class="adm-note sla">⏱ The SLA column counts down from the Application SLA target (configured in E4). A negative value (e.g. <code>-18596m</code>) means the SLA has already been exceeded by that many minutes.</div>
+        <div class="adm-note sla"><div>⏱ The SLA column counts down from the Application SLA target (configured in E4). A negative value (e.g. <code>-18596m</code>) means the SLA has already been exceeded by that many minutes.</div></div>
       </div>
     </div>
 
@@ -2535,7 +2541,7 @@ code { font-family: 'Fira Code', monospace; font-size: 11px;
         </div>
 
         <h3 style="color:#7A9CC4">⚠ Tester Notes</h3>
-        <div class="adm-note warn">⚠️ Rule order matters. Drag rules to reorder precedence. The Reset to defaults button restores the system's original rule set for that category. Changes take effect immediately with no deployment step.</div>
+        <div class="adm-note warn"><div>⚠️ Rule order matters. Drag rules to reorder precedence. The Reset to defaults button restores the system's original rule set for that category. Changes take effect immediately with no deployment step.</div></div>
       </div>
     </div>
 
@@ -2581,7 +2587,7 @@ code { font-family: 'Fira Code', monospace; font-size: 11px;
         </div>
 
         <h3 style="color:#7A9CC4">⚠ Tester Notes</h3>
-        <div class="adm-note warn">⚠️ Rejecting a section does not delete investor data. It marks the section as editable and notifies the investor. All previous submissions are retained in audit history.</div>
+        <div class="adm-note warn"><div>⚠️ Rejecting a section does not delete investor data. It marks the section as editable and notifies the investor. All previous submissions are retained in audit history.</div></div>
       </div>
     </div>
 
@@ -2661,7 +2667,7 @@ code { font-family: 'Fira Code', monospace; font-size: 11px;
         </div>
 
         <h3 style="color:#7A9CC4">⚠ Tester Notes</h3>
-        <div class="adm-note info">ℹ️ The Dashboard (E0) AI Models count reflects models in all statuses. A count of 0 active Published models means the platform's recommendation engine falls back to a static fund list.</div>
+        <div class="adm-note info"><div>ℹ️ The Dashboard (E0) AI Models count reflects models in all statuses. A count of 0 active Published models means the platform's recommendation engine falls back to a static fund list.</div></div>
       </div>
     </div>
 
@@ -2699,7 +2705,7 @@ code { font-family: 'Fira Code', monospace; font-size: 11px;
         <p>Alternative: click <strong>Cancel</strong> to return to the model list (E2) without saving.</p>
 
         <h3 style="color:#7A9CC4">⚠ Tester Notes</h3>
-        <div class="adm-note tip">💡 New models are always created as <strong>Draft</strong>. To make a model live, it must be published from the model list (E2) after creation.</div>
+        <div class="adm-note tip"><div>💡 New models are always created as <strong>Draft</strong>. To make a model live, it must be published from the model list (E2) after creation.</div></div>
       </div>
     </div>
 
@@ -2747,7 +2753,7 @@ code { font-family: 'Fira Code', monospace; font-size: 11px;
         </div>
 
         <h3 style="color:#7A9CC4">⚠ Tester Notes</h3>
-        <div class="adm-note info">ℹ️ Inactive rules are stored but not evaluated. Toggle a rule's status to activate or deactivate it without deleting it. The Dashboard (E0) Business Rules count reflects only Active rules.</div>
+        <div class="adm-note info"><div>ℹ️ Inactive rules are stored but not evaluated. Toggle a rule's status to activate or deactivate it without deleting it. The Dashboard (E0) Business Rules count reflects only Active rules.</div></div>
       </div>
     </div>
 
@@ -2795,7 +2801,7 @@ code { font-family: 'Fira Code', monospace; font-size: 11px;
         </div>
 
         <h3 style="color:#7A9CC4">⚠ Tester Notes</h3>
-        <div class="adm-note sla">⏱ SLA countdown on the Worklist always shows the Application SLA (not the role SLA). The role SLA is used internally for escalation routing and reporting but is not displayed on the worklist row itself.</div>
+        <div class="adm-note sla"><div>⏱ SLA countdown on the Worklist always shows the Application SLA (not the role SLA). The role SLA is used internally for escalation routing and reporting but is not displayed on the worklist row itself.</div></div>
       </div>
     </div>
 
@@ -2832,7 +2838,7 @@ code { font-family: 'Fira Code', monospace; font-size: 11px;
         </div>
 
         <h3 style="color:#7A9CC4">⚠ Tester Notes</h3>
-        <div class="adm-note info">ℹ️ Reference data changes affect all investor-facing screens immediately. Changes to country lists, entity types, or risk profile options will be visible in the investor portal on next page load.</div>
+        <div class="adm-note info"><div>ℹ️ Reference data changes affect all investor-facing screens immediately. Changes to country lists, entity types, or risk profile options will be visible in the investor portal on next page load.</div></div>
       </div>
     </div>
 
@@ -2888,7 +2894,7 @@ code { font-family: 'Fira Code', monospace; font-size: 11px;
         </div>
 
         <h3 style="color:#7A9CC4">⚠ Tester Notes</h3>
-        <div class="adm-note tip">💡 Use <code>GetInstanceQuery</code> events to trace workflow instance lookups. Use <code>GetUserActivitySummaryQuery</code> events to identify which staff members are most active.</div>
+        <div class="adm-note tip"><div>💡 Use <code>GetInstanceQuery</code> events to trace workflow instance lookups. Use <code>GetUserActivitySummaryQuery</code> events to identify which staff members are most active.</div></div>
       </div>
     </div>
 
@@ -2938,7 +2944,7 @@ code { font-family: 'Fira Code', monospace; font-size: 11px;
         </div>
 
         <h3 style="color:#7A9CC4">⚠ Tester Notes</h3>
-        <div class="adm-note info">ℹ️ Instances stuck on <code>must-complete-in-person</code> indicate investors who were redirected to a branch for in-person completion. These will remain InProgress until the branch process is completed and the workflow is advanced manually or via integration.</div>
+        <div class="adm-note info"><div>ℹ️ Instances stuck on <code>must-complete-in-person</code> indicate investors who were redirected to a branch for in-person completion. These will remain InProgress until the branch process is completed and the workflow is advanced manually or via integration.</div></div>
       </div>
     </div>
 
@@ -2975,10 +2981,10 @@ code { font-family: 'Fira Code', monospace; font-size: 11px;
         </div>
 
         <h3 style="color:#e05a60">✗ Error States</h3>
-        <div class="adm-note warn">✗ <strong>Export PDF is non-functional.</strong> Clicking Export PDF does not generate a downloadable PDF of the displayed report. This step cannot currently be validated by testers.</div>
+        <div class="adm-note warn"><div>✗ <strong>Export PDF is non-functional.</strong> Clicking Export PDF does not generate a downloadable PDF of the displayed report. This step cannot currently be validated by testers.</div></div>
 
         <h3 style="color:#7A9CC4">⚠ Tester Notes</h3>
-        <div class="adm-note warn">⚠️ The table above shows sample/mock data captured during testing, not live figures. The Period, Client, Total Market Value, and Annualised Return values will differ depending on which period and client are actually selected — treat this table as an illustration of the report's layout and fields, not as representative data to validate against.</div>
+        <div class="adm-note warn"><div>⚠️ The table above shows sample/mock data captured during testing, not live figures. The Period, Client, Total Market Value, and Annualised Return values will differ depending on which period and client are actually selected — treat this table as an illustration of the report's layout and fields, not as representative data to validate against.</div></div>
       </div>
     </div>
 
@@ -3020,21 +3026,74 @@ code { font-family: 'Fira Code', monospace; font-size: 11px;
         </div>
 
         <h3 style="color:#7A9CC4">⚠ Tester Notes</h3>
-        <div class="adm-note tip">💡 Run diagnostics when investors or staff report errors connecting to bank validation, document verification, or other third-party services. The results identify which specific integration is failing.</div>
+        <div class="adm-note tip"><div>💡 Run diagnostics when investors or staff report errors connecting to bank validation, document verification, or other third-party services. The results identify which specific integration is failing.</div></div>
       </div>
     </div>
 
-    <!-- ═══ E10–E16 · EXTENDED MODULES (RE-AUTH REQUIRED) ═══════════════════ -->
+    <!-- ═══ E10–E16 · EXTENDED MODULES ═══════════════════════════════════════ -->
+    <div class="adm-note info" style="margin-bottom:18px"><div>ℹ️ <strong>Extended Modules (E10–E16) — how these were written.</strong> They are based on screenshots of the Dev portal and the as-built requirements reference supplied for these seven pages. Rows marked <em>screenshot</em> were seen on screen; rows marked <em>as-built</em> come from the reference and were not visible in the captured screenshots. Happy Path steps and Error States describe documented behaviour and have not yet been executed in this walkthrough — record the actual result against each when testing.</div></div>
+
     <div class="adm-sc" id="E10">
       <div class="adm-sc-header">
         <span class="adm-section-id">E10</span>
         <span class="adm-section-title">Channel</span>
-        <span class="adm-tag pending" style="font-size:10.5px;margin-left:auto"><span class="adm-tag-dot"></span>🔐 Not enough captured to write a test case</span>
+        <span class="adm-tag approved" style="font-size:10.5px;margin-left:auto"><span class="adm-tag-dot"></span>✓ Happy</span>
+        <span class="adm-tag rejected" style="font-size:10.5px"><span class="adm-tag-dot"></span>✗ 7 Error States</span>
+        <span class="adm-tag pending" style="font-size:10.5px"><span class="adm-tag-dot"></span>⚠ Note</span>
         <span style="font-family:'Fira Code',monospace;font-size:11px;color:var(--adm-text3)">/admin/channel</span>
       </div>
       <div class="adm-sc-body">
-        <div class="adm-pending-ss"><span class="icon">🔐</span><div class="msg"><strong style="color:var(--adm-text)">Content to be captured after re-authentication</strong><br>Session expired before this module was reached. Matt must re-authenticate via Microsoft Azure AD and navigate to /admin/channel to capture this screen.</div></div>
-        <p style="color:var(--adm-text2)">Expected purpose: Configure the distribution channel settings for investor onboarding — likely controls which channels (OIP, branch, broker) are active and their specific configuration parameters.</p>
+        <h3>Trigger</h3>
+        <p>Staff opens <strong>Channel</strong> from the left-hand navigation. The page is titled <strong>Channel Manager</strong> with the sub-heading “Manage content and documents displayed in the internal portal.” Access requires the <code>channel.manage</code> permission.</p>
+
+        <h3>UI Elements</h3>
+        <div class="adm-table-wrap"><table class="adm-table"><thead><tr><th>Element</th><th>Description</th></tr></thead><tbody>
+              <tr><td>Tabs<em style="color:var(--adm-text3);font-style:normal;font-size:11px"> · screenshot</em></td><td><strong>Content</strong> and <strong>Media Library</strong>. The Media Library tab was captured open.</td></tr>
+              <tr><td>+ Upload Document button<em style="color:var(--adm-text3);font-style:normal;font-size:11px"> · screenshot</em></td><td>Shown on the Media Library tab.</td></tr>
+              <tr><td>Asset grid<em style="color:var(--adm-text3);font-style:normal;font-size:11px"> · screenshot</em></td><td>One card per asset: file icon or thumbnail, resource name (a long <code>wf-…</code> identifier), original file name, and <strong>View</strong> and <strong>Delete</strong> buttons.</td></tr>
+              <tr><td>Upload dialog<em style="color:var(--adm-text3);font-style:normal;font-size:11px"> · as-built</em></td><td>Accepts <code>.jpg</code> <code>.jpeg</code> <code>.png</code> <code>.pdf</code> <code>.docx</code> <code>.xlsx</code>, maximum 10 MB. The resource name is derived from the file name and is editable before submitting.</td></tr>
+              <tr><td>Content tab<em style="color:var(--adm-text3);font-style:normal;font-size:11px"> · as-built</em></td><td>Table of content items: resource name, title, content type, status, last modified and a per-row action cluster. Above it: a content-type filter (free text), a <strong>Review queue</strong> button and a <strong>New</strong> button. <em>Not captured in the screenshots.</em></td></tr>
+              <tr><td>New / Edit form<em style="color:var(--adm-text3);font-style:normal;font-size:11px"> · as-built</em></td><td>Replaces the table in place (not a dialog). Fields: resource name, title, slug, content type (free text), summary (optional), body (rich-text editor), hero image (optional, via media picker). Typing the title auto-derives the resource name and slug (kebab-case, both overridable). On edit, resource name and content type are immutable and hidden.</td></tr>
+              <tr><td>Review queue<em style="color:var(--adm-text3);font-style:normal;font-size:11px"> · as-built</em></td><td>Panel of items awaiting review with <strong>Approve</strong> (no comment required) and <strong>Reject</strong> (stays disabled until a reason is entered).</td></tr>
+            </tbody></table></div>
+        <p>Row actions on the Content tab depend on the item’s status (as-built):</p>
+        <div class="adm-table-wrap"><table class="adm-table"><thead><tr><th>Status</th><th>Available actions</th></tr></thead><tbody>
+              <tr><td>Draft</td><td>Submit for review · Publish · Schedule · Edit · Version history · Delete</td></tr>
+              <tr><td>PendingReview</td><td>Withdraw · Edit · Version history · Delete</td></tr>
+              <tr><td>Approved</td><td>Publish · Schedule · Edit · Version history · Delete</td></tr>
+              <tr><td>Published</td><td>Unpublish · Edit · Version history · Delete</td></tr>
+              <tr><td>Scheduled</td><td>Cancel schedule · Edit · Version history · Delete</td></tr>
+            </tbody></table></div>
+
+        <h3 style="color:#3aac6e">✓ Happy Path</h3>
+        <div class="adm-paths">
+          <div class="adm-path"><span class="adm-path-arr">1.</span><span>Open <strong>Channel</strong> → Channel Manager loads with the <strong>Content</strong> and <strong>Media Library</strong> tabs</span></div>
+          <div class="adm-path"><span class="adm-path-arr">2.</span><span><strong>Media Library</strong> → click <strong>+ Upload Document</strong> → choose a supported file under 10 MB → the asset appears in the grid with a resource name derived from the file name</span></div>
+          <div class="adm-path"><span class="adm-path-arr">3.</span><span>Click <strong>View</strong> on an asset → the asset opens; click <strong>Delete</strong> on an asset that is not referenced elsewhere → it is removed</span></div>
+          <div class="adm-path"><span class="adm-path-arr">4.</span><span><strong>Content</strong> tab → click <strong>New</strong> → complete the form (typing the title auto-fills resource name and slug) → save → item is created with status <strong>Draft</strong></span></div>
+          <div class="adm-path"><span class="adm-path-arr">5.</span><span>On the Draft row click <strong>Submit for review</strong> → status becomes <strong>PendingReview</strong></span></div>
+          <div class="adm-path"><span class="adm-path-arr">6.</span><span>A <em>different</em> user opens <strong>Review queue</strong> → clicks <strong>Approve</strong> → status becomes <strong>Approved</strong></span></div>
+          <div class="adm-path"><span class="adm-path-arr">7.</span><span>Click <strong>Publish</strong> (or <strong>Schedule</strong> with a future date/time) → status becomes <strong>Published</strong>; a scheduled item publishes automatically when due (checked every 30 seconds)</span></div>
+        </div>
+
+        <h3 style="color:#e05a60">✗ Error States</h3>
+        <div class="adm-paths">
+          <div class="adm-path"><span class="adm-path-arr">E1</span><span><strong>Self-approval:</strong> the reviewer is the same person as the author → refused by the server (403)</span></div>
+          <div class="adm-path"><span class="adm-path-arr">E2</span><span><strong>Reject without a reason:</strong> the Reject button stays disabled until a reason is entered; the server also refuses a rejection without a reason (422)</span></div>
+          <div class="adm-path"><span class="adm-path-arr">E3</span><span><strong>Delete a PendingReview item</strong> → refused (409)</span></div>
+          <div class="adm-path"><span class="adm-path-arr">E4</span><span><strong>Delete media that is used as a hero or OG image</strong> → refused (409); the server’s message is shown and the delete button stays disabled until the dialog is reopened</span></div>
+          <div class="adm-path"><span class="adm-path-arr">E5</span><span><strong>Schedule in the past</strong> → refused (422)</span></div>
+          <div class="adm-path"><span class="adm-path-arr">E6</span><span><strong>Unsafe upload:</strong> a PDF containing active content (<code>/JS</code>, <code>/JavaScript</code>, <code>/Launch</code>, <code>/OpenAction</code>) or an Office file containing <code>vbaProject.bin</code> → rejected</span></div>
+          <div class="adm-path"><span class="adm-path-arr">E7</span><span><strong>File over 10 MB</strong> → refused only after the upload completes (no client-side size check)</span></div>
+        </div>
+
+        <h3 style="color:#7A9CC4">⚠ Tester Notes</h3>
+        <div class="adm-note warn"><div>⚠️ <strong>Verify live:</strong> the reference shows the frontend and backend disagree on two routes — <strong>Submit for review</strong> (frontend calls <code>/submit</code>, backend maps <code>/submit-for-review</code>) and <strong>Cancel schedule</strong>. Both may fail. Click through each and record the result.</div></div>
+        <div class="adm-note info"><div>ℹ️ Editing a <strong>Published</strong> item does not change the live version — the edit creates a shadow draft and the published version keeps being served until the new one is approved and published. Cancelling a schedule returns the item to Approved, Published or Draft depending on its version pointers, not always Draft.</div></div>
+        <div class="adm-note info"><div>ℹ️ The UI does not prevent actions the server later refuses: <strong>Edit</strong> and <strong>Delete</strong> render for every status (including PendingReview) and <strong>Publish</strong> is offered directly on Draft rows. Refusals arrive as server errors.</div></div>
+        <div class="adm-note info"><div>ℹ️ <strong>Version history</strong> is append-only. Restoring a version seeds the form with that version’s body; saving creates a new draft — it does not overwrite the live item.</div></div>
+        <div class="adm-note warn"><div>⚠️ The content list has no error state: a failed query shows the empty state, so an outage looks the same as “no content exists”. SEO fields (page title, meta description, OG image) are not present in the UI.</div></div>
+        <div class="adm-note warn"><div>⚠️ <strong>Observed in the Media Library screenshot:</strong> two image cards show the file name as broken-image text instead of a thumbnail, and the grid includes file names that look like ID documents, bank confirmation letters and adverse-media reports. Confirm whether these belong in this library. (The reference notes that only Public media is served anonymously and a private asset returns an indistinguishable 404.)</div></div>
       </div>
     </div>
 
@@ -3042,12 +3101,50 @@ code { font-family: 'Fira Code', monospace; font-size: 11px;
       <div class="adm-sc-header">
         <span class="adm-section-id">E11</span>
         <span class="adm-section-title">Compliance Docs</span>
-        <span class="adm-tag pending" style="font-size:10.5px;margin-left:auto"><span class="adm-tag-dot"></span>🔐 Not enough captured to write a test case</span>
-        <span style="font-family:'Fira Code',monospace;font-size:11px;color:var(--adm-text3)">/admin/admin/compliance-prompts</span>
+        <span class="adm-tag approved" style="font-size:10.5px;margin-left:auto"><span class="adm-tag-dot"></span>✓ Happy</span>
+        <span class="adm-tag rejected" style="font-size:10.5px"><span class="adm-tag-dot"></span>✗ 3 Error States</span>
+        <span class="adm-tag pending" style="font-size:10.5px"><span class="adm-tag-dot"></span>⚠ Note</span>
+        <span style="font-family:'Fira Code',monospace;font-size:11px;color:var(--adm-text3)">/admin/compliance-prompts</span>
       </div>
       <div class="adm-sc-body">
-        <div class="adm-pending-ss"><span class="icon">🔐</span><div class="msg"><strong style="color:var(--adm-text)">Content to be captured after re-authentication</strong><br>Session expired before this module was reached. Navigate to /admin/admin/compliance-prompts after re-auth.</div></div>
-        <p style="color:var(--adm-text2)">Expected purpose: Manage the text of compliance prompts and disclosures shown to investors during onboarding (e.g. PEP declarations, tax residency notices, FICA disclosures).</p>
+        <h3>Trigger</h3>
+        <p>Staff opens <strong>Compliance Docs</strong> from the left-hand navigation. The page is headed <strong>Compliance Document Processing</strong>. Access requires the <code>compliance.administer</code> permission (roles shown in the reference: PlatformAdmin, OperationsManager, Compliance).</p>
+
+        <h3>UI Elements</h3>
+        <div class="adm-table-wrap"><table class="adm-table"><thead><tr><th>Element</th><th>Description</th></tr></thead><tbody>
+              <tr><td>Intro text<em style="color:var(--adm-text3);font-style:normal;font-size:11px"> · screenshot</em></td><td>Explains that for each document category you can edit the AI extraction prompt sent to the document intelligence service and set the confidence threshold below which a processed document, and the form fields it populated, are flagged for manual review.</td></tr>
+              <tr><td>Category card<em style="color:var(--adm-text3);font-style:normal;font-size:11px"> · screenshot</em></td><td>One card per compliance category (the captured card is <strong>Application Form</strong>).</td></tr>
+              <tr><td>Threshold pill<em style="color:var(--adm-text3);font-style:normal;font-size:11px"> · screenshot</em></td><td><code>Review below 70%</code> on the captured card. An <code>Inactive</code> pill also appears where a category is inactive.</td></tr>
+              <tr><td>Edit button<em style="color:var(--adm-text3);font-style:normal;font-size:11px"> · screenshot</em></td><td>Switches the card into edit mode.</td></tr>
+              <tr><td>Prompt block<em style="color:var(--adm-text3);font-style:normal;font-size:11px"> · screenshot</em></td><td>The current extraction prompt shown in a monospace block.</td></tr>
+              <tr><td>Provenance line<em style="color:var(--adm-text3);font-style:normal;font-size:11px"> · screenshot</em></td><td>“Not edited yet (using the seeded default prompt)” — or “Last edited {date} by {user}” once edited.</td></tr>
+              <tr><td>View history link<em style="color:var(--adm-text3);font-style:normal;font-size:11px"> · screenshot</em></td><td>Shows the prompt’s version history (append-only, newest first).</td></tr>
+              <tr><td>Edit mode<em style="color:var(--adm-text3);font-style:normal;font-size:11px"> · as-built</em></td><td><strong>Prompt template</strong> (text area; empty means “use the default prompt”), <strong>Flag for review below (%)</strong> (numeric 0–100, clamped; non-numeric becomes 0) with helper text explaining that the threshold both holds the document for review and flags its fields, plus <strong>Save</strong> and <strong>Cancel</strong>. <em>Not captured in the screenshots.</em></td></tr>
+            </tbody></table></div>
+
+        <h3 style="color:#3aac6e">✓ Happy Path</h3>
+        <div class="adm-paths">
+          <div class="adm-path"><span class="adm-path-arr">1.</span><span>Open <strong>Compliance Docs</strong> → a card is shown for each category with its threshold pill, prompt and provenance line</span></div>
+          <div class="adm-path"><span class="adm-path-arr">2.</span><span>Click <strong>Edit</strong> on a category → the card becomes a form</span></div>
+          <div class="adm-path"><span class="adm-path-arr">3.</span><span>Change the prompt and/or the threshold (0–100) → click <strong>Save</strong> → a transient <code>Saved</code> pill appears and the card returns to read mode showing the new threshold</span></div>
+          <div class="adm-path"><span class="adm-path-arr">4.</span><span>The provenance line now reads “Last edited {date} by {user}” and <strong>View history</strong> lists the new prompt version at the top</span></div>
+          <div class="adm-path"><span class="adm-path-arr">5.</span><span>Upload a compliance document after the change → a document scoring <em>below</em> the new threshold is held for review and its populated fields are flagged</span></div>
+        </div>
+
+        <h3 style="color:#e05a60">✗ Error States</h3>
+        <div class="adm-paths">
+          <div class="adm-path"><span class="adm-path-arr">E1</span><span><strong>Save refused by the server:</strong> the form stays open and <em>no error message is shown</em> — the only success signal is the transient <code>Saved</code> pill</span></div>
+          <div class="adm-path"><span class="adm-path-arr">E2</span><span><strong>Partial save:</strong> the prompt and the threshold are saved as two separate requests; if one is refused the category is left half-updated with no indication</span></div>
+          <div class="adm-path"><span class="adm-path-arr">E3</span><span><strong>User without <code>compliance.administer</code></strong> → the server refuses the page’s requests</span></div>
+        </div>
+
+        <h3 style="color:#7A9CC4">⚠ Tester Notes</h3>
+        <div class="adm-note warn"><div>⚠️ <strong>Threshold 0 is not an “off” switch.</strong> A document whose confidence is <em>unavailable</em> (as opposed to low) is flagged at every threshold value, including 0. The helper text does not say this — test it explicitly.</div></div>
+        <div class="adm-note info"><div>ℹ️ A threshold change applies to <strong>subsequent uploads only</strong>. The verdict for a document is fixed at upload, so editing the threshold never re-flags applications already in flight.</div></div>
+        <div class="adm-note warn"><div>⚠️ <strong>Cancel</strong> discards the prompt draft but leaves the threshold draft in place.</div></div>
+        <div class="adm-note info"><div>ℹ️ This page is edit-only: there is no create, delete or activate/deactivate action. The <code>Inactive</code> pill is display-only. Despite the name, the scope is prompts and thresholds — none of the wider document administration in spec 026 is reachable here.</div></div>
+        <div class="adm-note info"><div>ℹ️ The captured card shows a 70% threshold. The reference notes a frontend fallback of 80 and that the seeded server default and any server-side 0–100 validation could not be determined — record the actual values you see. Only one category card was captured in the screenshot.</div></div>
+        <div class="adm-note info"><div>ℹ️ The reference records that this page has no automated tests (deliberately); verification is manual.</div></div>
       </div>
     </div>
 
@@ -3055,12 +3152,57 @@ code { font-family: 'Fira Code', monospace; font-size: 11px;
       <div class="adm-sc-header">
         <span class="adm-section-id">E12</span>
         <span class="adm-section-title">Document Library</span>
-        <span class="adm-tag pending" style="font-size:10.5px;margin-left:auto"><span class="adm-tag-dot"></span>🔐 Not enough captured to write a test case</span>
+        <span class="adm-tag approved" style="font-size:10.5px;margin-left:auto"><span class="adm-tag-dot"></span>✓ Happy</span>
+        <span class="adm-tag rejected" style="font-size:10.5px"><span class="adm-tag-dot"></span>✗ 5 Error States</span>
+        <span class="adm-tag pending" style="font-size:10.5px"><span class="adm-tag-dot"></span>⚠ Note</span>
         <span style="font-family:'Fira Code',monospace;font-size:11px;color:var(--adm-text3)">/admin/documents</span>
       </div>
       <div class="adm-sc-body">
-        <div class="adm-pending-ss"><span class="icon">🔐</span><div class="msg"><strong style="color:var(--adm-text)">Content to be captured after re-authentication</strong><br>Navigate to /admin/documents after re-auth.</div></div>
-        <p style="color:var(--adm-text2)">Expected purpose: Central repository for platform documents — terms and conditions, fund fact sheets, onboarding documents. Staff can upload, version, and manage documents that are surfaced to investors.</p>
+        <h3>Trigger</h3>
+        <p>Staff opens <strong>Document Library</strong> from the left-hand navigation. Sub-heading: “Find and open any document across the platform. You see only the categories your role permits.” Access requires at least one of the documents <code>view</code> permissions (KYC, screening, client communications or marketing).</p>
+
+        <h3>UI Elements</h3>
+        <div class="adm-table-wrap"><table class="adm-table"><thead><tr><th>Element</th><th>Description</th></tr></thead><tbody>
+              <tr><td>Upload document button<em style="color:var(--adm-text3);font-style:normal;font-size:11px"> · screenshot</em></td><td>Top right. Shown only to users with <code>upload</code> on at least one category.</td></tr>
+              <tr><td>File name filter<em style="color:var(--adm-text3);font-style:normal;font-size:11px"> · screenshot</em></td><td>Text box (placeholder “e.g. bank-proof.pdf”).</td></tr>
+              <tr><td>Category / Status filters<em style="color:var(--adm-text3);font-style:normal;font-size:11px"> · screenshot</em></td><td>Dropdowns defaulting to <strong>All categories</strong> and <strong>All statuses</strong>. Only categories the user is granted appear.</td></tr>
+              <tr><td>Search · Clear · More filters<em style="color:var(--adm-text3);font-style:normal;font-size:11px"> · screenshot</em></td><td><strong>More filters</strong> reveals owner reference, date from and date to (as-built). Filters are applied on <strong>Search</strong>.</td></tr>
+              <tr><td>Category folders<em style="color:var(--adm-text3);font-style:normal;font-size:11px"> · screenshot</em></td><td>Four folders with document counts: <strong>Compliance Screening</strong> (60), <strong>KYC &amp; Personal Information</strong> (461), <strong>Marketing</strong> (0), <strong>Proposals &amp; Communications</strong> (0) — counts at time of capture.</td></tr>
+              <tr><td>Empty folder text<em style="color:var(--adm-text3);font-style:normal;font-size:11px"> · screenshot</em></td><td>Expanded Marketing and Proposals &amp; Communications show “No documents in this folder yet.”</td></tr>
+              <tr><td>KYC client folders<em style="color:var(--adm-text3);font-style:normal;font-size:11px"> · screenshot</em></td><td>Under KYC &amp; Personal Information: one expandable row per client number (format <code>CLI-01-…</code>) with a document count; some rows carry an <strong>Unverified ID</strong> pill.</td></tr>
+              <tr><td>Document rows<em style="color:var(--adm-text3);font-style:normal;font-size:11px"> · screenshot</em></td><td>File name, status chips <code>Active</code> · <code>System</code> · <code>Read-only</code>, and a date. Compliance Screening lists <code>kyc-screening-report-….pdf</code> and <code>adverse-media-report-….pdf</code> files.</td></tr>
+              <tr><td>Row actions<em style="color:var(--adm-text3);font-style:normal;font-size:11px"> · as-built</em></td><td><strong>View</strong> (opens in a new tab) and <strong>Download</strong>; <strong>Approve</strong> / <strong>Reject</strong> on a manually uploaded entry pending approval; <strong>Retire</strong> on a manual entry. Not visible on the captured System rows.</td></tr>
+              <tr><td>Upload dialog<em style="color:var(--adm-text3);font-style:normal;font-size:11px"> · as-built</em></td><td>Category, file (<code>.jpg</code> <code>.jpeg</code> <code>.png</code> <code>.pdf</code> <code>.docx</code> <code>.xlsx</code>) and owner details. The dialog states the upload lands pending approval.</td></tr>
+            </tbody></table></div>
+
+        <h3 style="color:#3aac6e">✓ Happy Path</h3>
+        <div class="adm-paths">
+          <div class="adm-path"><span class="adm-path-arr">1.</span><span>Open <strong>Document Library</strong> → the category tree loads, showing only the categories your role permits, each with a count</span></div>
+          <div class="adm-path"><span class="adm-path-arr">2.</span><span>Expand <strong>Compliance Screening</strong> → screening report documents are listed with <code>Active</code> / <code>System</code> / <code>Read-only</code> chips and dates</span></div>
+          <div class="adm-path"><span class="adm-path-arr">3.</span><span>Expand <strong>KYC &amp; Personal Information</strong> → client folders appear by client number; expand one → that client’s documents are listed</span></div>
+          <div class="adm-path"><span class="adm-path-arr">4.</span><span>Enter a file name (or choose a category/status) → click <strong>Search</strong> → results switch from the tree to a flat list; click <strong>Clear</strong> → returns to the tree</span></div>
+          <div class="adm-path"><span class="adm-path-arr">5.</span><span>Click <strong>View</strong> on a document → it opens in a new tab; click <strong>Download</strong> → the file downloads</span></div>
+          <div class="adm-path"><span class="adm-path-arr">6.</span><span>Click <strong>Upload document</strong> → choose category, file and owner details → the entry is created <strong>pending approval</strong></span></div>
+          <div class="adm-path"><span class="adm-path-arr">7.</span><span>A <em>different</em> user with <code>approve</code> on that category clicks <strong>Approve</strong> → the entry becomes approved</span></div>
+          <div class="adm-path"><span class="adm-path-arr">8.</span><span>A user with <code>retire</code> clicks <strong>Retire</strong> on a manual entry and confirms → the entry is archived (not deleted)</span></div>
+        </div>
+
+        <h3 style="color:#e05a60">✗ Error States</h3>
+        <div class="adm-paths">
+          <div class="adm-path"><span class="adm-path-arr">E1</span><span><strong>Uploader approves their own document</strong> → refused (403). Every other unauthorised case returns an indistinguishable 404</span></div>
+          <div class="adm-path"><span class="adm-path-arr">E2</span><span><strong>Reject without a reason</strong> → a reason is required before the rejection can be completed</span></div>
+          <div class="adm-path"><span class="adm-path-arr">E3</span><span><strong>Retire a System entry</strong> → refused (400)</span></div>
+          <div class="adm-path"><span class="adm-path-arr">E4</span><span><strong>User without a grant on a category</strong> → the category is absent from the tree, filters and upload picker; a direct request for one of its documents returns 404</span></div>
+          <div class="adm-path"><span class="adm-path-arr">E5</span><span><strong>User with no grants at all</strong> → an empty-state card is shown, which looks the same as an empty library</span></div>
+        </div>
+
+        <h3 style="color:#7A9CC4">⚠ Tester Notes</h3>
+        <div class="adm-note info"><div>ℹ️ <strong>System</strong> entries are auto-indexed and read-only. The library stores metadata only; binaries are streamed from their home store on demand.</div></div>
+        <div class="adm-note warn"><div>⚠️ <strong>Edit has no UI.</strong> The permission and API exist, but no Edit control is rendered anywhere. (In the back end, editing an entry returns it to pending approval.)</div></div>
+        <div class="adm-note info"><div>ℹ️ Counts are computed after permission filtering, so a user must not be able to infer that a client or document exists from a number. Compare folder counts between a full-access and a restricted user.</div></div>
+        <div class="adm-note info"><div>ℹ️ Any filter except owner reference switches from tree to flat search. The <strong>Retired</strong> status option appears only for users holding <code>viewRetired</code> on at least one category.</div></div>
+        <div class="adm-note info"><div>ℹ️ Client rows show the client number only (not the name). The tree has a client level only inside KYC &amp; Personal Information.</div></div>
+        <div class="adm-note warn"><div>⚠️ Known gaps in the reference: a wrongly keyed client folder cannot be merged or split from the UI; retention and legal hold are deferred (retention is indefinite). Folder names in this screenshot (e.g. “Proposals &amp; Communications”) were captured as shown — confirm they match the category names granted to your test user.</div></div>
       </div>
     </div>
 
@@ -3068,12 +3210,61 @@ code { font-family: 'Fira Code', monospace; font-size: 11px;
       <div class="adm-sc-header">
         <span class="adm-section-id">E13</span>
         <span class="adm-section-title">Guided Investing Engine</span>
-        <span class="adm-tag pending" style="font-size:10.5px;margin-left:auto"><span class="adm-tag-dot"></span>🔐 Not enough captured to write a test case</span>
+        <span class="adm-tag approved" style="font-size:10.5px;margin-left:auto"><span class="adm-tag-dot"></span>✓ Happy</span>
+        <span class="adm-tag rejected" style="font-size:10.5px"><span class="adm-tag-dot"></span>✗ 7 Error States</span>
+        <span class="adm-tag pending" style="font-size:10.5px"><span class="adm-tag-dot"></span>⚠ Note</span>
         <span style="font-family:'Fira Code',monospace;font-size:11px;color:var(--adm-text3)">/admin/guided-investing</span>
       </div>
       <div class="adm-sc-body">
-        <div class="adm-pending-ss"><span class="icon">🔐</span><div class="msg"><strong style="color:var(--adm-text)">Content to be captured after re-authentication</strong><br>Navigate to /admin/guided-investing after re-auth.</div></div>
-        <p style="color:var(--adm-text2)">Expected purpose: Configure the Guided Investing questionnaire flow that investors complete during onboarding (C2–C7 risk profiling). Likely controls question text, answer options, and the scoring algorithm that maps responses to risk profiles (Conservative / Moderate / Aggressive).</p>
+        <h3>Trigger</h3>
+        <p>Staff opens <strong>Guided Investing Engine</strong> from the left-hand navigation. The header reads “Active configuration v1 · edits publish a new version”, with <strong>Configuration</strong> and <strong>Leads</strong> buttons. Access requires the <code>guidedInvesting.manage</code> permission. The sections below are listed top to bottom as captured.</p>
+
+        <h3>UI Elements</h3>
+        <div class="adm-table-wrap"><table class="adm-table"><thead><tr><th>Element</th><th>Description</th></tr></thead><tbody>
+              <tr><td>Interview questions &amp; options<em style="color:var(--adm-text3);font-style:normal;font-size:11px"> · screenshot</em></td><td>Per question: <strong>Active</strong> checkbox, <strong>Question text</strong>, <strong>Hint (optional)</strong> and an <strong>Options</strong> list with a checkbox and text per option. Captured questions: Q1 (“Which best describes you?” — hint “Don’t overthink it — just pick the one that feels most like you.”; options: employed / self-employed or run my own business / not currently employed / retired), Q1A, Q1B, Q1C, Q1D, Q5 (broader financial position; 3 options incl. “I have substantial wealth and assets beyond this investment”), Q7 (market-fall reaction; 4 options), Q8 (effect of a significant loss; 4 options).</td></tr>
+              <tr><td>Fund universe<em style="color:var(--adm-text3);font-style:normal;font-size:11px"> · screenshot</em></td><td>Table: <strong>Fund · On · Risk · Min yrs · Satellite</strong> plus a delete icon per row. Captured rows (risk / min yrs): Capricorn Investment Fund 5/0, Enhanced Cash Fund 10/1, High Yield Fund 25/2, Stable Fund 40/2, Premier Fund 55/3, Managed Fund 75/5 — all On, none Satellite. Below: <strong>Add fund from catalogue</strong> (dropdown “Select a fund” + <strong>Add fund</strong>), a <strong>Manage fund catalogue →</strong> button, and a one-line role description per fund (e.g. “Emergency fund and liquidity.”).</td></tr>
+              <tr><td>Goals table<em style="color:var(--adm-text3);font-style:normal;font-size:11px"> · screenshot</em></td><td><strong>Goal · On · Type · Min risk · Max risk · Lock cautious</strong>. Captured: Save for a future goal (50 / 20 / 70), Grow my wealth over the long term (90 / 50 / 100), Generate regular income (50 / 20 / 50), Protect my capital (30 / 0 / 50, Lock cautious ticked), Emergency Fund (20 / 0 / 30). Note under the table: every enabled goal is shown to all clients — there is no per-life-stage filtering; use <strong>On</strong> to remove a goal.</td></tr>
+              <tr><td>Goal names, icons &amp; descriptions<em style="color:var(--adm-text3);font-style:normal;font-size:11px"> · screenshot</em></td><td>Per goal: <strong>Goal name</strong>, <strong>Icon</strong> dropdown (e.g. bar-increase, time-increase, bar-curve, piggy-bank, scales), <strong>Short description (shown on card)</strong> and <strong>Read more (expanded text)</strong>.</td></tr>
+              <tr><td>Wealth / specialist trigger<em style="color:var(--adm-text3);font-style:normal;font-size:11px"> · screenshot</em></td><td><strong>Referral threshold (N$)</strong> — captured value <code>1000000</code> (“Total invested ≥ this qualifies”). The end-of-flow specialist offer appears when total lump sum reaches the threshold, or when the client chose “I have substantial wealth and assets beyond this investment” at Q5.</td></tr>
+              <tr><td>Recommendation weights<em style="color:var(--adm-text3);font-style:normal;font-size:11px"> · screenshot</em></td><td>Captured values: Risk blend – attitude (Q7) <code>0,6</code>; Risk blend – capacity (Q8) <code>0,4</code>; Dependency nudge High <code>-10</code>; Dependency nudge Low <code>5</code>; Life-stage nudge starting out <code>-5</code>; senior/executive <code>10</code>; Horizon (locked-cautious) <code>0,5</code>; Type (locked-cautious) <code>0,5</code>. <strong>Advanced — scoring model (change with care):</strong> Time horizon <code>0,4</code>; Goal type <code>0,3</code>; Risk personality <code>0,3</code>; caption “Core weights sum: 1.00”.</td></tr>
+              <tr><td>Display &amp; behaviour<em style="color:var(--adm-text3);font-style:normal;font-size:11px"> · screenshot</em></td><td>Checkboxes: Show other suitable options (on); Number of alternatives (<code>2</code>); Show fund role descriptions (on); Show monthly contribution field (on); Require a lump sum amount to proceed (off); Show totals row on summary (on); Show adviser/profile view on results (off — “Internal — reveals hidden dimensions”); Show end-of-flow specialist offer (on — “Affluent clients only”); Clamp target score to 0–100 (on — “Recommended on”).</td></tr>
+              <tr><td>Disclaimer<em style="color:var(--adm-text3);font-style:normal;font-size:11px"> · screenshot</em></td><td>Free-text disclaimer shown to investors (captured text states the suggestions assist fund selection and are not personalised financial advice).</td></tr>
+              <tr><td>Export / Import<em style="color:var(--adm-text3);font-style:normal;font-size:11px"> · screenshot</em></td><td>Text area (“Paste a full configuration JSON here to import…”), <strong>Export JSON</strong> and <strong>Import pasted JSON</strong> buttons.</td></tr>
+              <tr><td>Action bar<em style="color:var(--adm-text3);font-style:normal;font-size:11px"> · screenshot</em></td><td>Sticky footer: <strong>Save configuration</strong> and <strong>Reset to defaults</strong>.</td></tr>
+              <tr><td>Leads view<em style="color:var(--adm-text3);font-style:normal;font-size:11px"> · as-built</em></td><td>Table of captured leads: type, trigger, total (NAD), fund, captured date. <em>Not captured in the screenshots.</em></td></tr>
+            </tbody></table></div>
+
+        <h3 style="color:#3aac6e">✓ Happy Path</h3>
+        <div class="adm-paths">
+          <div class="adm-path"><span class="adm-path-arr">1.</span><span>Open <strong>Guided Investing Engine</strong> → the header shows the active configuration version and the Configuration view is displayed</span></div>
+          <div class="adm-path"><span class="adm-path-arr">2.</span><span>Edit a question’s text, hint or an option’s text; untick <strong>Active</strong> on a question → it is dimmed (not hidden)</span></div>
+          <div class="adm-path"><span class="adm-path-arr">3.</span><span><strong>Fund universe:</strong> change a fund’s Risk / Min yrs / On / Satellite; choose a fund in <strong>Add fund from catalogue</strong> → <strong>Add fund</strong> → it appears as a new row (defaults: On, risk 50, horizon 0, not Satellite); remove a fund and confirm</span></div>
+          <div class="adm-path"><span class="adm-path-arr">4.</span><span><strong>Goals:</strong> change Min/Max risk or untick <strong>On</strong>; edit a goal’s name, icon, short description and read-more text</span></div>
+          <div class="adm-path"><span class="adm-path-arr">5.</span><span>Change the <strong>Referral threshold</strong> and any <strong>Recommendation weights</strong>; confirm the core weights caption reflects the total</span></div>
+          <div class="adm-path"><span class="adm-path-arr">6.</span><span>Toggle items under <strong>Display &amp; behaviour</strong> and edit the <strong>Disclaimer</strong></span></div>
+          <div class="adm-path"><span class="adm-path-arr">7.</span><span>Click <strong>Save configuration</strong> → a new version is published (the header states the active version)</span></div>
+          <div class="adm-path"><span class="adm-path-arr">8.</span><span>Click <strong>Leads</strong> → captured leads are listed; click <strong>Configuration</strong> to return</span></div>
+          <div class="adm-path"><span class="adm-path-arr">9.</span><span>Click <strong>Export JSON</strong> → a JSON file of the current draft downloads; paste a full configuration JSON and click <strong>Import pasted JSON</strong> → the JSON is validated locally and then sent</span></div>
+        </div>
+
+        <h3 style="color:#e05a60">✗ Error States</h3>
+        <div class="adm-paths">
+          <div class="adm-path"><span class="adm-path-arr">E1</span><span><strong>Fund risk outside 0–100 or minimum horizon below 0</strong> → save blocked (400)</span></div>
+          <div class="adm-path"><span class="adm-path-arr">E2</span><span><strong>Goal min/max risk outside 0–100, or min greater than max</strong> → save blocked (400)</span></div>
+          <div class="adm-path"><span class="adm-path-arr">E3</span><span><strong>A goal’s whitelist or fixed fund list names a fund that does not exist or is not enabled</strong> → save blocked (400)</span></div>
+          <div class="adm-path"><span class="adm-path-arr">E4</span><span><strong>A fund key that is not in the fund catalogue</strong> → save blocked (400)</span></div>
+          <div class="adm-path"><span class="adm-path-arr">E5</span><span><strong>Core weights do not sum to 1.00</strong> → warning only: the page shows the actual total and the save succeeds as “Saved with warnings”</span></div>
+          <div class="adm-path"><span class="adm-path-arr">E6</span><span><strong>Someone else published a newer version while you have unsaved edits</strong> → a warning banner offers “Load latest (discards your edits)”; a rejected save (409) refetches and raises the same banner</span></div>
+          <div class="adm-path"><span class="adm-path-arr">E7</span><span><strong>Import with JSON that cannot be parsed</strong> → the JSON is validated locally as parseable before it is sent</span></div>
+        </div>
+
+        <h3 style="color:#7A9CC4">⚠ Tester Notes</h3>
+        <div class="adm-note warn"><div>⚠️ <strong>Reset to defaults has no confirmation dialog</strong> — it fires immediately. Take care in a shared environment, and compare with Roles &amp; Permissions (E14) where Reset to defaults <em>is</em> confirmed.</div></div>
+        <div class="adm-note warn"><div>⚠️ <strong>Export JSON exports the local draft</strong> (including unsaved edits), not the saved configuration.</div></div>
+        <div class="adm-note info"><div>ℹ️ Numeric inputs are not range-clamped in the browser (they revert to the previous value on non-numeric input); out-of-range values are refused only by the server. Decimal weights display with a comma (e.g. <code>0,6</code>) in the captured screenshots.</div></div>
+        <div class="adm-note info"><div>ℹ️ Not editable on this page: a goal’s <code>whitelist</code> / <code>fixed</code> fund lists (only via Import JSON), question branch routing, version history and fund assumptions. The icon dropdown is limited to eight allowlisted artwork names; an unknown name renders no artwork.</div></div>
+        <div class="adm-note info"><div>ℹ️ The <strong>Add fund</strong> dropdown lists only catalogue funds not already in the universe and is disabled once all are added. <strong>Manage fund catalogue →</strong> leads to Fund Catalogue (E15).</div></div>
+        <div class="adm-note info"><div>ℹ️ Per the reference, there is no guided-journey fixture and no high-risk fixture available for testing this engine end to end.</div></div>
       </div>
     </div>
 
@@ -3081,12 +3272,57 @@ code { font-family: 'Fira Code', monospace; font-size: 11px;
       <div class="adm-sc-header">
         <span class="adm-section-id">E14</span>
         <span class="adm-section-title">Roles &amp; Permissions</span>
-        <span class="adm-tag pending" style="font-size:10.5px;margin-left:auto"><span class="adm-tag-dot"></span>🔐 Not enough captured to write a test case</span>
+        <span class="adm-tag approved" style="font-size:10.5px;margin-left:auto"><span class="adm-tag-dot"></span>✓ Happy</span>
+        <span class="adm-tag rejected" style="font-size:10.5px"><span class="adm-tag-dot"></span>✗ 5 Error States</span>
+        <span class="adm-tag pending" style="font-size:10.5px"><span class="adm-tag-dot"></span>⚠ Note</span>
         <span style="font-family:'Fira Code',monospace;font-size:11px;color:var(--adm-text3)">/admin/user-permissions</span>
       </div>
       <div class="adm-sc-body">
-        <div class="adm-pending-ss"><span class="icon">🔐</span><div class="msg"><strong style="color:var(--adm-text)">Content to be captured after re-authentication</strong><br>Navigate to /admin/user-permissions after re-auth.</div></div>
-        <p style="color:var(--adm-text2)">Expected purpose: Manage staff roles and their access permissions within the admin portal. Roles referenced in SLA config include: Back Office – Onboarding, Operations Manager, Compliance. This module likely defines what each role can see and do.</p>
+        <h3>Trigger</h3>
+        <p>Staff opens <strong>Roles &amp; Permissions</strong> from the left-hand navigation. The page is titled <strong>User Permissions</strong> with the sub-heading “Role → permission matrix and user role assignment. Changes are saved to cam_ointp and enforced by the API.” Access requires the <code>role.manage</code> permission.</p>
+
+        <h3>UI Elements</h3>
+        <div class="adm-table-wrap"><table class="adm-table"><thead><tr><th>Element</th><th>Description</th></tr></thead><tbody>
+              <tr><td>Matrix / Users<em style="color:var(--adm-text3);font-style:normal;font-size:11px"> · screenshot</em></td><td>Two tab-style buttons. <strong>Matrix</strong> was captured open. Both are disabled while a row save is in flight (as-built).</td></tr>
+              <tr><td>Add role · Reset to defaults<em style="color:var(--adm-text3);font-style:normal;font-size:11px"> · screenshot</em></td><td>Buttons top right.</td></tr>
+              <tr><td>Role columns<em style="color:var(--adm-text3);font-style:normal;font-size:11px"> · screenshot</em></td><td>Ten roles, each with an edit (pencil) icon: <strong>Admin, Back Office – Onboarding, Channel Admin, Compliance, Corpus Admin, Manager, Operations Manager, Recon Officer, Retail Sales, Wealth Consultant</strong>.</td></tr>
+              <tr><td>Section rows<em style="color:var(--adm-text3);font-style:normal;font-size:11px"> · screenshot</em></td><td>Expandable rows: Worklist, Applications, Recon, Profile, Proposals, Admin, Corpus, Channel, Workflow, Guided Investing, Compliance, Documents — KYC &amp; Personal Information, Documents — Compliance Screening, Documents — Proposals &amp; Communications, Documents — Marketing.</td></tr>
+              <tr><td>Cell states<em style="color:var(--adm-text3);font-style:normal;font-size:11px"> · screenshot</em></td><td>Checkbox per section/role: ticked, partially ticked (dash) or empty. In the capture the <strong>Admin</strong> column is ticked for every section.</td></tr>
+              <tr><td>Footer note<em style="color:var(--adm-text3);font-style:normal;font-size:11px"> · screenshot</em></td><td>“Server-side enforcement is the security boundary. Client gating is UX only.”</td></tr>
+              <tr><td>Expanded section<em style="color:var(--adm-text3);font-style:normal;font-size:11px"> · as-built</em></td><td>Expanding a section reveals one row per individual permission. Hovering or focusing a section checkbox highlights the cells it governs.</td></tr>
+              <tr><td>Users tab<em style="color:var(--adm-text3);font-style:normal;font-size:11px"> · as-built</em></td><td>Search box, then per user: name, email, <strong>Active</strong> checkbox, roles checkbox list and a per-row <strong>Save</strong>. <em>Not captured in the screenshots.</em></td></tr>
+              <tr><td>Create / Edit role dialog<em style="color:var(--adm-text3);font-style:normal;font-size:11px"> · as-built</em></td><td>Create: key (<code>^[A-Za-z][A-Za-z0-9_]*$</code>, max 100), display name (non-blank, max 200), description (capped, live counter), initial permissions grouped by area. Edit: key read-only; a system role’s display name is also read-only; description editable. Delete is a two-step arm-then-commit action.</td></tr>
+            </tbody></table></div>
+
+        <h3 style="color:#3aac6e">✓ Happy Path</h3>
+        <div class="adm-paths">
+          <div class="adm-path"><span class="adm-path-arr">1.</span><span>Open <strong>Roles &amp; Permissions</strong> → the <strong>Matrix</strong> tab shows sections down the side and roles across the top</span></div>
+          <div class="adm-path"><span class="adm-path-arr">2.</span><span>Expand a section → one row per permission appears</span></div>
+          <div class="adm-path"><span class="adm-path-arr">3.</span><span>Tick or untick a single permission → it is saved immediately for that role (the role’s full permission set is written)</span></div>
+          <div class="adm-path"><span class="adm-path-arr">4.</span><span>Click a <strong>section</strong> checkbox → a confirmation dialog appears; where coverage is partial it offers both directions (grant all / remove all)</span></div>
+          <div class="adm-path"><span class="adm-path-arr">5.</span><span>Click <strong>Add role</strong> → complete key, display name, description and permissions → the role appears as a new column</span></div>
+          <div class="adm-path"><span class="adm-path-arr">6.</span><span>Click a role’s pencil icon → edit the description (and the display name for a custom role) → save</span></div>
+          <div class="adm-path"><span class="adm-path-arr">7.</span><span>Delete a custom role: arm the delete (a lockout warning is shown), then commit → the role is removed</span></div>
+          <div class="adm-path"><span class="adm-path-arr">8.</span><span><strong>Users</strong> tab → search a user → change <strong>Active</strong> and/or roles → click that row’s <strong>Save</strong> → only the changed items are saved</span></div>
+          <div class="adm-path"><span class="adm-path-arr">9.</span><span>Click <strong>Reset to defaults</strong> → the confirmation states how many system roles are affected → confirm → the seeded matrix is restored</span></div>
+        </div>
+
+        <h3 style="color:#e05a60">✗ Error States</h3>
+        <div class="adm-paths">
+          <div class="adm-path"><span class="adm-path-arr">E1</span><span><strong>Invalid role details:</strong> a key that does not match the pattern (or exceeds 100 characters), or a blank / over-200-character display name</span></div>
+          <div class="adm-path"><span class="adm-path-arr">E2</span><span><strong>Delete a system role</strong> → refused with explanatory text</span></div>
+          <div class="adm-path"><span class="adm-path-arr">E3</span><span><strong>Unknown permission key</strong> → refused by the server (422)</span></div>
+          <div class="adm-path"><span class="adm-path-arr">E4</span><span><strong>Last-administrator guard:</strong> deleting a role or removing a role from a user so that no one holds <code>role.manage</code> → refused</span></div>
+          <div class="adm-path"><span class="adm-path-arr">E5</span><span><strong>Refused permission write:</strong> a page-level error is scrolled into view and states how many queued writes were discarded because they were based on the refused state; a failed Users-tab save shows a per-row error beneath the roles cell</span></div>
+        </div>
+
+        <h3 style="color:#7A9CC4">⚠ Tester Notes</h3>
+        <div class="adm-note info"><div>ℹ️ <strong>Entra ID authenticates; the database authorises.</strong> An Entra app-role assignment grants nothing — access comes only from the roles set here.</div></div>
+        <div class="adm-note info"><div>ℹ️ Users are created on their <strong>first sign-in</strong>; there is no invite. A person appears on the Users tab only after they have signed in once. The resolved access is cached for about 60 seconds, so a role change can take up to a minute to take effect.</div></div>
+        <div class="adm-note info"><div>ℹ️ The create-role dialog cannot be dismissed (× / Escape / backdrop / Cancel) while the write is in flight. Deactivating a user issues no roles or permissions at all.</div></div>
+        <div class="adm-note warn"><div>⚠️ The matrix renders the <em>frontend’s</em> permission catalogue, not the server’s, so a permission that exists on the server may not appear here. Renaming a seeded role (possible via the API; blocked in this UI) diverges names shown on other screens (SLA picker, worklist assignee grouping).</div></div>
+        <div class="adm-note warn"><div>⚠️ Concurrent edits to the same user are last-write-wins. The Users table has no “no users” empty state — it simply shows no rows.</div></div>
+        <div class="adm-note tip"><div>💡 Every mutation here writes an audit event (source <code>OIntP</code>, category <code>RBAC</code>) — after testing a change, confirm the matching entry appears in the Audit Log (E16).</div></div>
       </div>
     </div>
 
@@ -3094,12 +3330,55 @@ code { font-family: 'Fira Code', monospace; font-size: 11px;
       <div class="adm-sc-header">
         <span class="adm-section-id">E15</span>
         <span class="adm-section-title">Fund Catalogue</span>
-        <span class="adm-tag pending" style="font-size:10.5px;margin-left:auto"><span class="adm-tag-dot"></span>🔐 Not enough captured to write a test case</span>
-        <span style="font-family:'Fira Code',monospace;font-size:11px;color:var(--adm-text3)">/admin/admin/funds</span>
+        <span class="adm-tag approved" style="font-size:10.5px;margin-left:auto"><span class="adm-tag-dot"></span>✓ Happy</span>
+        <span class="adm-tag rejected" style="font-size:10.5px"><span class="adm-tag-dot"></span>✗ 5 Error States</span>
+        <span class="adm-tag pending" style="font-size:10.5px"><span class="adm-tag-dot"></span>⚠ Note</span>
+        <span style="font-family:'Fira Code',monospace;font-size:11px;color:var(--adm-text3)">/admin/funds</span>
       </div>
       <div class="adm-sc-body">
-        <div class="adm-pending-ss"><span class="icon">🔐</span><div class="msg"><strong style="color:var(--adm-text)">Content to be captured after re-authentication</strong><br>Navigate to /admin/admin/funds after re-auth.</div></div>
-        <p style="color:var(--adm-text2)">Expected purpose: Manage the fund products available to investors on the platform — fund names, minimums, risk categories, and eligibility rules. Connects to the business rule <code>product.min_invest</code> (E3) that enforces minimum investment amounts at D5.</p>
+        <h3>Trigger</h3>
+        <p>Staff opens <strong>Fund Catalogue</strong> from the left-hand navigation. Sub-heading: “The master fund records available to the guided-investing universe and other fund-aware features — identity fields plus the full fact sheet.” Access requires the <code>admin.funds</code> permission.</p>
+
+        <h3>UI Elements</h3>
+        <div class="adm-table-wrap"><table class="adm-table"><thead><tr><th>Element</th><th>Description</th></tr></thead><tbody>
+              <tr><td>Edit Contact Details button<em style="color:var(--adm-text3);font-style:normal;font-size:11px"> · screenshot</em></td><td>Top right. Opens the single shared contact-details record (contact details are not stored per fund).</td></tr>
+              <tr><td>+ New Fund button<em style="color:var(--adm-text3);font-style:normal;font-size:11px"> · screenshot</em></td><td>Top right. Opens the fund editor in create mode.</td></tr>
+              <tr><td>Fund table<em style="color:var(--adm-text3);font-style:normal;font-size:11px"> · screenshot</em></td><td>Columns: <strong>Fund Key · Name · Fund Type · Risk Profile · TER · Source · Rolling Returns · Actions</strong>. Fifteen funds were listed, e.g. <code>capricorn-bond-fund</code> / Capricorn Bond Fund / General Bond Fund / Moderate / 1.10%.</td></tr>
+              <tr><td>Source column<em style="color:var(--adm-text3);font-style:normal;font-size:11px"> · screenshot</em></td><td><code>Seed</code> on every captured row.</td></tr>
+              <tr><td>Rolling Returns column<em style="color:var(--adm-text3);font-style:normal;font-size:11px"> · screenshot</em></td><td><code>Not captured</code> on every captured row.</td></tr>
+              <tr><td>Actions column<em style="color:var(--adm-text3);font-style:normal;font-size:11px"> · screenshot</em></td><td>Edit (pencil) and delete (bin) icons per row.</td></tr>
+              <tr><td>Editor tabs<em style="color:var(--adm-text3);font-style:normal;font-size:11px"> · as-built</em></td><td>Six tabs: <strong>Identity</strong> (fund image .jpg/.jpeg/.png and fact sheet .pdf uploads — disabled on a new fund until saved; fund key, name, fund type, ISIN, risk profile, TER, platform fee, target return, fund size, inception date, minimum opening balance, Silica fund number), <strong>Overview</strong> (fund managers, comment, who should invest), <strong>Contact</strong> (read-only), <strong>Performance</strong> (currency, fund and benchmark series, rolling returns, live preview of the investor chart), <strong>Allocation</strong> (label + category/percentage rows), <strong>Holdings</strong> (top ten rows). <em>Not captured in the screenshots.</em></td></tr>
+              <tr><td>Editor footer<em style="color:var(--adm-text3);font-style:normal;font-size:11px"> · as-built</em></td><td>Sticky <strong>Save</strong> / <strong>Cancel</strong> with an unsaved-changes note; <strong>Version history</strong> on existing funds.</td></tr>
+            </tbody></table></div>
+
+        <h3 style="color:#3aac6e">✓ Happy Path</h3>
+        <div class="adm-paths">
+          <div class="adm-path"><span class="adm-path-arr">1.</span><span>Open <strong>Fund Catalogue</strong> → the table lists the funds with key, name, type, risk profile, TER, source and rolling-returns status</span></div>
+          <div class="adm-path"><span class="adm-path-arr">2.</span><span>Click <strong>+ New Fund</strong> → on the Identity tab type a name → the fund key is derived automatically in kebab-case → complete the remaining fields → <strong>Save</strong> → the fund appears in the list</span></div>
+          <div class="adm-path"><span class="adm-path-arr">3.</span><span>Re-open the new fund → upload a fund image (.jpg/.jpeg/.png) and a fact sheet (.pdf) → each upload takes effect immediately</span></div>
+          <div class="adm-path"><span class="adm-path-arr">4.</span><span><strong>Performance</strong> tab → enter series and rolling-returns rows (blank values are allowed) → the live preview shows what an investor would see, including “unavailable” states</span></div>
+          <div class="adm-path"><span class="adm-path-arr">5.</span><span><strong>Allocation</strong> and <strong>Holdings</strong> tabs → add, edit and remove rows (zero rows is allowed) → <strong>Save</strong></span></div>
+          <div class="adm-path"><span class="adm-path-arr">6.</span><span>Edit an existing fund → change a field → <strong>Save</strong> → a version snapshot is stored; open <strong>Version history</strong> → restore a version</span></div>
+          <div class="adm-path"><span class="adm-path-arr">7.</span><span>Click the delete icon on a fund that is not in use → confirm → the fund is removed</span></div>
+          <div class="adm-path"><span class="adm-path-arr">8.</span><span>Click <strong>Edit Contact Details</strong> → update the shared contact record</span></div>
+        </div>
+
+        <h3 style="color:#e05a60">✗ Error States</h3>
+        <div class="adm-paths">
+          <div class="adm-path"><span class="adm-path-arr">E1</span><span><strong>Duplicate fund key</strong> → the save is refused</span></div>
+          <div class="adm-path"><span class="adm-path-arr">E2</span><span><strong>Delete a fund that is in use</strong> → refused (409); the server’s message is shown, otherwise “This fund is in use and cannot be deleted.”</span></div>
+          <div class="adm-path"><span class="adm-path-arr">E3</span><span><strong>Validation errors:</strong> fund key required, kebab-case, max 128 (checked on create only); name required, max 256; TER and platform fee 0–100 (max 32 characters); allocation / holdings rows need a label and a percentage 0–100; rolling-returns rows need a period and duplicate periods are rejected. A tab with errors is marked with an icon and a warning alert names the tabs</span></div>
+          <div class="adm-path"><span class="adm-path-arr">E4</span><span><strong>Someone else changed the fund</strong> → the save is refused (409) and a conflict alert appears on the list</span></div>
+          <div class="adm-path"><span class="adm-path-arr">E5</span><span><strong>Leaving the editor with unsaved changes</strong> → blocked by an unsaved-changes guard; a fact sheet that is not a PDF is refused</span></div>
+        </div>
+
+        <h3 style="color:#7A9CC4">⚠ Tester Notes</h3>
+        <div class="adm-note warn"><div>⚠️ <strong>Rolling returns are not captured for any fund</strong> — every row in the screenshot shows <code>Not captured</code> (the reference records this for all fifteen funds as of 4 Sept 2026). Investor-facing views therefore show “not yet available”; the page deliberately never estimates or invents a figure. A missing value shows as a dash.</div></div>
+        <div class="adm-note info"><div>ℹ️ Image and fact-sheet uploads are immediate and bump the stored version straight away. Image/fact-sheet upload is disabled until a new fund has been saved once.</div></div>
+        <div class="adm-note info"><div>ℹ️ The Contact tab is read-only — contact details are one shared record edited via <strong>Edit Contact Details</strong>.</div></div>
+        <div class="adm-note warn"><div>⚠️ Domicile is hardcoded as “NAM” in the back end and has no input anywhere. The list has no empty state — an empty catalogue renders an empty table.</div></div>
+        <div class="adm-note info"><div>ℹ️ This catalogue is the source the Guided Investing fund universe (E13) reads from — a fund must exist here before it can be added there, and a fund referenced elsewhere cannot be deleted.</div></div>
+        <div class="adm-note info"><div>ℹ️ Could not be determined from the reference: whether fact-sheet upload checks the PDF type by content or by file extension only.</div></div>
       </div>
     </div>
 
@@ -3107,12 +3386,51 @@ code { font-family: 'Fira Code', monospace; font-size: 11px;
       <div class="adm-sc-header">
         <span class="adm-section-id">E16</span>
         <span class="adm-section-title">Audit Log</span>
-        <span class="adm-tag pending" style="font-size:10.5px;margin-left:auto"><span class="adm-tag-dot"></span>🔐 Not enough captured to write a test case</span>
-        <span style="font-family:'Fira Code',monospace;font-size:11px;color:var(--adm-text3)">/admin/admin/audit-log</span>
+        <span class="adm-tag approved" style="font-size:10.5px;margin-left:auto"><span class="adm-tag-dot"></span>✓ Happy</span>
+        <span class="adm-tag rejected" style="font-size:10.5px"><span class="adm-tag-dot"></span>✗ 3 Error States</span>
+        <span class="adm-tag pending" style="font-size:10.5px"><span class="adm-tag-dot"></span>⚠ Note</span>
+        <span style="font-family:'Fira Code',monospace;font-size:11px;color:var(--adm-text3)">/admin/audit-log</span>
       </div>
       <div class="adm-sc-body">
-        <div class="adm-pending-ss"><span class="icon">🔐</span><div class="msg"><strong style="color:var(--adm-text)">Content to be captured after re-authentication</strong><br>Navigate to /admin/admin/audit-log after re-auth.</div></div>
-        <p style="color:var(--adm-text2)">Expected purpose: Complete immutable audit trail of all platform actions — staff approvals, overrides, configuration changes, and investor data access. Required for FICA/compliance reporting. The Dashboard (E0) "Events Logged" metric reflects entries in this log.</p>
+        <h3>Trigger</h3>
+        <p>Staff opens <strong>Audit Log</strong> from the left-hand navigation. The page is titled <strong>Audit Log &amp; Activity Log</strong> with the sub-heading “Compliance and activity trail across all channels.” It is read-only. Access requires the <code>admin.auditLog</code> permission.</p>
+
+        <h3>UI Elements</h3>
+        <div class="adm-table-wrap"><table class="adm-table"><thead><tr><th>Element</th><th>Description</th></tr></thead><tbody>
+              <tr><td>Tabs<em style="color:var(--adm-text3);font-style:normal;font-size:11px"> · screenshot</em></td><td><strong>Audit Log</strong> (captured open) and <strong>Activity Log</strong>.</td></tr>
+              <tr><td>Date range<em style="color:var(--adm-text3);font-style:normal;font-size:11px"> · screenshot</em></td><td>Date picker (“Select start and end date”). The end date is inclusive of the whole day (as-built).</td></tr>
+              <tr><td>Category · Action<em style="color:var(--adm-text3);font-style:normal;font-size:11px"> · screenshot</em></td><td>Free-text boxes.</td></tr>
+              <tr><td>Outcome<em style="color:var(--adm-text3);font-style:normal;font-size:11px"> · screenshot</em></td><td>Dropdown, default <strong>All outcomes</strong>.</td></tr>
+              <tr><td>User / actor · Correlation ID<em style="color:var(--adm-text3);font-style:normal;font-size:11px"> · screenshot</em></td><td>Free-text boxes. (There is no Source filter on this tab.)</td></tr>
+              <tr><td>Results table<em style="color:var(--adm-text3);font-style:normal;font-size:11px"> · screenshot</em></td><td>Columns: <strong>When · User · Category · Action · Outcome · Source · Entity · Correlation ID</strong>. Newest first.</td></tr>
+              <tr><td>Example values seen<em style="color:var(--adm-text3);font-style:normal;font-size:11px"> · screenshot</em></td><td>Category: DocumentLibrary, WorkflowGuard, Onboarding, OTP, DataChange. Action: ClientNumberMinted, TransitionGuardEvaluated, CompleteAnonymousOnboarding, WhatsAppOtpDispatched, EmailOtpDispatched, IssueOnboardingToken, Worklist.ProfileView. Outcome chips: <code>Success</code>, <code>Pass</code>. Source chips: <code>OIntP</code>, <code>ServiceLayer</code>. The User column is blank or “—” on some rows.</td></tr>
+              <tr><td>Activity Log tab<em style="color:var(--adm-text3);font-style:normal;font-size:11px"> · as-built</em></td><td>Filters: date range, activity type (PageView / Action / Navigation / Search / Export / Error / Command / Query), user email, source (OIP / OIntP / ServiceLayer / Other). Columns: When · User · Activity type · Context · Source · Entity · Route. <em>Not captured in the screenshots.</em></td></tr>
+              <tr><td>Row detail drawer<em style="color:var(--adm-text3);font-style:normal;font-size:11px"> · as-built</em></td><td>Clicking a row opens a side drawer: short ID header, summary (audit events), chips, metadata card and a <strong>Show / Hide raw JSON</strong> toggle.</td></tr>
+            </tbody></table></div>
+
+        <h3 style="color:#3aac6e">✓ Happy Path</h3>
+        <div class="adm-paths">
+          <div class="adm-path"><span class="adm-path-arr">1.</span><span>Open <strong>Audit Log</strong> → the <strong>Audit Log</strong> tab lists events, newest first, 25 per page</span></div>
+          <div class="adm-path"><span class="adm-path-arr">2.</span><span>Enter a date range (and/or exact category, action, outcome, user or correlation ID) → the table shows only matching events and returns to page 1; a single-day range returns that whole day</span></div>
+          <div class="adm-path"><span class="adm-path-arr">3.</span><span>Click a row → the detail drawer opens; use <strong>Show raw JSON</strong> to see the pretty-printed detail</span></div>
+          <div class="adm-path"><span class="adm-path-arr">4.</span><span>Switch to <strong>Activity Log</strong> → apply an activity-type or source filter → matching activity events are listed</span></div>
+          <div class="adm-path"><span class="adm-path-arr">5.</span><span>Cross-check: perform an auditable action elsewhere (for example change a role in E14 or approve a document in E12) → a matching event (category <code>RBAC</code> / <code>DocumentLibrary</code>, source <code>OIntP</code>) appears in the Audit Log</span></div>
+        </div>
+
+        <h3 style="color:#e05a60">✗ Error States</h3>
+        <div class="adm-paths">
+          <div class="adm-path"><span class="adm-path-arr">E1</span><span><strong>Partial or differently-cased text</strong> in Category, Action or User / actor → an empty table with no hint (all filters are exact match, not search)</span></div>
+          <div class="adm-path"><span class="adm-path-arr">E2</span><span><strong>User without <code>admin.auditLog</code></strong> → the server refuses the page’s requests</span></div>
+          <div class="adm-path"><span class="adm-path-arr">E3</span><span><strong>Audit store misconfigured or unreachable</strong> → the table looks empty rather than showing an error (the writers swallow exceptions by design)</span></div>
+        </div>
+
+        <h3 style="color:#7A9CC4">⚠ Tester Notes</h3>
+        <div class="adm-note warn"><div>⚠️ <strong>If the log looks empty, do not assume nothing happened.</strong> A broken audit store is indistinguishable from a quiet one — there is no health, coverage or last-write indicator.</div></div>
+        <div class="adm-note info"><div>ℹ️ Fixed 25 rows per page; no sort control; no export (CSV/download). Filter dropdown values are hardcoded, so a new outcome / source / activity type emitted by a writer cannot be filtered until the UI is changed.</div></div>
+        <div class="adm-note info"><div>ℹ️ Returned but not displayed: client IP, user agent, request ID, entity ID, user ID and client version. The Correlation ID column shows only the first 8 characters, uppercased.</div></div>
+        <div class="adm-note info"><div>ℹ️ The captured Outcome column shows <code>Pass</code> as well as <code>Success</code>; the reference lists the filter values as Success / Failure / Denied / Other — record which values the dropdown actually offers.</div></div>
+        <div class="adm-note warn"><div>⚠️ The Activity drawer shows a hardcoded “Success” chip, but activity events have no outcome field — do not treat it as a recorded result.</div></div>
+        <div class="adm-note info"><div>ℹ️ This page has no specification, and no retention, archival, export or tamper-evidence requirement is defined or implemented.</div></div>
       </div>
     </div>
 
